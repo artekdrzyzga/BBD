@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>PanikoShop1</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body style="background-color: #F6F0E4;">  
+      
+<nav class="navbar navbar-expand-sm shadow p-3 mb-5 rounded sticky-top" style="background-color: #E8DFCE;">
+    <div class="container >
+      <div class="navbar-header">
+        <a class="navbar-brand" style="font-size: 30px; color: #5F5A51" href="<%= root_path %>"><span class="fa fa-home"></span></a>
+    
+    
+      
+         
+        <%= link_to "Products", admin_products_path, style: 'color:#5f5A51; font-size: 30px;'%>
+        <%= link_to "Categoriess", admin_categories_path, style: 'color:#5f5A51; font-size: 30px;'%>
+        <%= link_to "Orders", admin_orders_path, style: 'color:#5f5A51; font-size: 30px;'%>
+        <%= link_to "Customers", "#", style: 'color:#5f5A51; font-size: 30px;'%>
+    
+      </div>
+
+
+    </div>
+</nav>
+      <div class="container">
+        <%= yield %>
+      </div>s
+
+  </body>
+</html>

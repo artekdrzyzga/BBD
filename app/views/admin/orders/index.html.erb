@@ -1,0 +1,42 @@
+<h1>Orders</h1>
+
+<div class="search-form">
+   <%= search_form_for [:admin,@q] do |f| %>
+        <%= f.text_field :address_first_name_cont, placeholder: "Name"%>
+        <%= f.text_field :address_last_name_cont, placeholder: "Surname"%>
+        <%= f.submit "Szukaj" %>
+      <%end%>
+</div>
+
+
+<table class="table table-striped">
+  <thead> 
+    <tr>
+    <th><%= sort_link(@q, :id, 'Id', default_order: :desc) %> </th>
+       
+      <th>Name</th>
+      <th>Surname</th>
+      <th>Create Date</th>
+      <th>Status</th>
+      <th>Sum</th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @orders.each do |order| %>
+      <tr>
+        <td> <%= order.id %></td>
+        <td> <%= order.address.first_name%></td>
+        <td> <%= order.address.last_name%></td>
+        <td><%= l order.created_at, format: :long %></td>
+        <td><%= OrderStateMachine.states_map[order.current_state] %></td>
+        <td><%= number_to_currency order.full_cost %></td>
+        <td>
+          <%= link_to "Edit", admin_order_path(order), class: "btn btn-default btn-xs" %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= paginate @orders %>
