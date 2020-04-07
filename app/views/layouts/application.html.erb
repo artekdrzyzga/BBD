@@ -8,6 +8,89 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  
+
+
+    <style>
+* {box-sizing: border-box;}
+
+.img-magnifier-container {
+  position:relative;
+}
+
+.img-magnifier-glass {
+  position: absolute;
+  border: 1px solid #000;
+  border-radius: 50%;
+  cursor: none;
+  /*Set the size of the magnifier glass:*/
+  width: 200px;
+  height: 200px;
+}
+</style>
+  
+
+
+
+  <script>
+function magnify(imgID, zoom) {
+  var img, glass, w, h, bw;
+  img = document.getElementById(imgID);
+  /*create magnifier glass:*/
+  glass = document.createElement("DIV");
+  glass.setAttribute("class", "img-magnifier-glass");
+  /*insert magnifier glass:*/
+  img.parentElement.insertBefore(glass, img);
+  /*set background properties for the magnifier glass:*/
+  glass.style.backgroundImage = "url('" + img.src + "')";
+  glass.style.backgroundRepeat = "no-repeat";
+  glass.style.backgroundSize = (img.width * zoom) + "px " + (img.height * zoom) + "px";
+  bw = 3;
+  w = glass.offsetWidth / 2;
+  h = glass.offsetHeight / 2;
+  /*execute a function when someone moves the magnifier glass over the image:*/
+  glass.addEventListener("mousemove", moveMagnifier);
+  img.addEventListener("mousemove", moveMagnifier);
+  /*and also for touch screens:*/
+  glass.addEventListener("touchmove", moveMagnifier);
+  img.addEventListener("touchmove", moveMagnifier);
+  function moveMagnifier(e) {
+    var pos, x, y;
+    /*prevent any other actions that may occur when moving over the image*/
+    e.preventDefault();
+    /*get the cursor's x and y positions:*/
+    pos = getCursorPos(e);
+    x = pos.x;
+    y = pos.y;
+    /*prevent the magnifier glass from being positioned outside the image:*/
+    if (x > img.width - (w / zoom)) {x = img.width - (w / zoom);}
+    if (x < w / zoom) {x = w / zoom;}
+    if (y > img.height - (h / zoom)) {y = img.height - (h / zoom);}
+    if (y < h / zoom) {y = h / zoom;}
+    /*set the position of the magnifier glass:*/
+    glass.style.left = (x - w) + "px";
+    glass.style.top = (y - h) + "px";
+    /*display what the magnifier glass "sees":*/
+    glass.style.backgroundPosition = "-" + ((x * zoom) - w + bw) + "px -" + ((y * zoom) - h + bw) + "px";
+  }
+  function getCursorPos(e) {
+    var a, x = 0, y = 0;
+    e = e || window.event;
+    /*get the x and y positions of the image:*/
+    a = img.getBoundingClientRect();
+    /*calculate the cursor's x and y coordinates, relative to the image:*/
+    x = e.pageX - a.left;
+    y = e.pageY - a.top;
+    /*consider any page scrolling:*/
+    x = x - window.pageXOffset;
+    y = y - window.pageYOffset;
+    return {x : x, y : y};
+  }
+}
+</script>
+  
+  
+  
   </head>
 
   <body style="background-color: #F6F0E4;">
@@ -18,21 +101,31 @@
       <div class="col col-sm-2">
         <%= image_tag("BBD_LOGO.png", size: "120x140") %>
       </div>
-      <div class="col col-sm-8 border ">
+      <div class="col col-sm-7">
         <p class="text-center">By British Design Limited</p>
         <p class="text-center" style="font-size: 16px">EST 2020 </p>
       </div>
-      <div class="col col-sm-2">
-      
-       <li>
-           <%= link_to cart_path, :class => "koszyk" do %>
+      <div class="col col-sm-3 text-right">
+           <%=link_to "Help   |",'#', style: 'color:#6c757d'%>
+           <%=link_to "Sign in   |",'#', style: 'color:#6c757d'%>
+           <%= link_to cart_path, :class => "koszyk", style: 'color:#6c757d'  do %>
             <span class="fa fa-shopping-cart"></span>
             <%= current_cart.line_items.map { |e| e.quantity }.sum %>
             products for
             <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %>
           <% end %>
-        </li>
-      </ul>
+
+
+     <% if controller.controller_name == "products" && controller.action_name == "index" %>
+       
+        <div class="search-form">
+          <%= search_form_for [@q] do |f| %>
+            <%= f.text_field :name_cont, placeholder: "Product Name"%>
+            <%= f.submit "Search" %>
+          <%end%>
+        </div>
+
+      <%end%>
 
       </div>
     </div>  
@@ -49,21 +142,16 @@
         <a class="navbar-brand text-secondary" href="#">Delivery and payments</a>
          <a class="navbar-brand text-secondary" href="#">About the store</a>
       </div>
-     
-     
-  
 
-
-
-    </div>
-
-      
-    
+    </div>   
 </nav>
+
+
 
 
      <div class="container-fluid">
     <div class="row">
+<% if controller.controller_name != "cart" %>
       <div class="col-md-2 border">
         <h3 class="text-center" >Categories</h3>
         <ul>
@@ -74,6 +162,9 @@
           <% end %>
         </ul>
       </div>
+<%end%>
+
+
       <div class="col-md-10">
       
         <%= yield %>

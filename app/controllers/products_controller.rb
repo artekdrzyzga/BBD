@@ -1,6 +1,7 @@
 class ProductsController < ApplicationController
   def index
-    @products = Product.order(created_at: :desc).limit(9)
+    @q = Product.ransack(params[:q])
+    @products= @q.result(distinct: true).page(params[:page]).per(9)
   end
 
   def show

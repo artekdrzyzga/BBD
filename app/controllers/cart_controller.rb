@@ -55,9 +55,8 @@ class CartController < ApplicationController
     if item
       item.destroy
     end
-    redirect_to :back
+    redirect_to cart_path
   end
-
 
 
   private

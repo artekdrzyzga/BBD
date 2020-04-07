@@ -1,20 +1,41 @@
-<div class="container-fluid">
-  <div class="col-md-5">
-    <h1><%= @product.name %></h1>
-    <p class="lead"><%= @product.description %></p>
-    
+<div class="col-md-12">
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-magnifier-container">
+            <%= image_tag(@product.picture, width: 366, align:'center', hspace:'20', id: 'myimage') if @product.picture.attached? %> 
+          </div>
+        </div>
+        <div class="col-md-6">  
+          <h1 class="text-center"><p><%= @product.name %></p></h1> 
+          <p1>Product code: <%= @product.code%></p>
+          <p class="lead"><%= number_to_currency(@product.price) %></p>
+          <p class="text-right">
+            <%= link_to add_product_cart_path(product_id: @product.id), method: :post, class: "btn btn-primary" do %>
+              <span class="fa fa-shopping-cart"> Add to cart
+            <% end %>
+           
+              
+           
+            <% if current_cart.line_items.present? %> 
+           
+              <%= link_to cart_path,class: "btn btn-primary" do %>
+                <span class="fa fa-shopping-cart"> Go to cart
+              <%end%>
+            <%end%>
 
-    <p class="lead"><%= number_to_currency(@product.price) %></p>
-    <p>
-      <%= link_to add_product_cart_path(product_id: @product.id), method: :post, class: "btn btn-primary" do %>
-        <span class="fa fa-shopping-cart"> Dodaj do koszyka
-      <% end %>
-    </p>
+          </p>
+          <p class="lead"><%= @product.description %></p>
+        </div>
+      </div>
+    </div>
   </div>
-  <div class="col-md-7">
-      <%= image_tag Faker::Placeholdit.image("640x480",'jpg','ccccccccc')%>
-    
-  </div>
-  
 </div>
 
+
+<script>
+/* Initiate Magnify Function
+with the id of the image, and the strength of the magnifier glass:*/
+magnify("myimage", 3);
+</script>

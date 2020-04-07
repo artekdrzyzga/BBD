@@ -4,8 +4,12 @@
   <%= f.input :code %>
   <%= f.input :price %>
   <%= f.association :category %>
-  
+  <%= f.input :picture, as: :file %>
 
+
+ 
   <%#= f.association :category %>
   <%= f.submit class: "btn btn-success" %>
 <% end %>
+
+

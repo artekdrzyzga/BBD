@@ -26,10 +26,42 @@
     color: #5F5A51;
  }
 
+ p1 {
+  font-family: "GillSans", sans-serif;    
+  font-size: 20px;
+  font-weight: bold;
+  color: #5F5A51;
+}
+
+
+
  ul {
   list-style-type: none;
   font-family: "GillSans", sans-serif;    
     font-size: 20px;
     font-weight: bold;
     color: #5F5A51;
+}
+
+
+
+
+.btn-primary
+{
+  background-color:  #88773F;
+  background-repeat: repeat-x;
+  border-color: #88773F;
+  color: #fff !important;
+}
+.btn-primary:hover, .btn-danger:focus, .btn-danger:active, .btn-danger.active, .open .dropdown-toggle.btn-danger {
+  background-color:  #5f5A51;
+  background-repeat: repeat-x;
+  border-color: #5f5A51;
+  color: #fff !important;
+ }
+
+
+ .div1 {
+  width: 300px;
+  height: 100px;
 }
