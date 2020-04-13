@@ -12,7 +12,7 @@
           <p1>Product code: <%= @product.code%></p>
           <p class="lead"><%= number_to_currency(@product.price) %></p>
           <p class="text-right">
-            <%= link_to add_product_cart_path(product_id: @product.id), method: :post, class: "btn btn-primary" do %>
+            <%= link_to add_product_cart_path(product_id: @product.id), method: :post, class: "btn btn-primary" do %> 
               <span class="fa fa-shopping-cart"> Add to cart
             <% end %>
            

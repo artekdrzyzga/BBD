@@ -68,3 +68,4 @@ gem 'statesman', '~> 5.0.0'
 gem 'ransack'
 gem 'kaminari'
 gem "rails-erd" 
+gem 'rails-i18n'

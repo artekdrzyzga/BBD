@@ -41,8 +41,9 @@ class CartController < ApplicationController
       order.line_items.new(product: product, quantity: 1, unit_price: product.price, item_name: product.name)
       order.save
     end
-
+    flash[:notice] = "Dodano do koszyka"
     redirect_back(:fallback_location => root_path)
+
   end
 
 
