@@ -1,0 +1,31 @@
+<table class="table table-striped">
+    <thead>
+    <tr>
+      <th>First name</th>
+      <th>Last name</th>
+      <th>email</th>
+       <th>Last login at</th>
+       <th>Current login at</th>
+       <th>Login count</th>
+       <th>Current login IP</th>
+    </tr>
+   </thead>
+
+    <tbody>
+      <% @users.each do |user| %>
+        <tr>
+          <td><%= user.first_name %></td>
+          <td><%= user.last_name %></td>
+          <td><%= user.email %></td> 
+          <td><%= user.last_login_at %></td> 
+          <td><%= user.current_login_at %></td> 
+          <td><%= user.login_count %></td> 
+           <td><%= user.current_login_ip %></td> 
+          
+        </tr>
+      <% end %>
+     </tbody> 
+     
+   </table>   
+     <%#= product.category.name  To dziala jak chcez z innych tabel wyciagac dane ASOCJACJA%>
+        

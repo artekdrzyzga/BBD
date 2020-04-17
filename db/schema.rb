@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_04_03_120153) do
+ActiveRecord::Schema.define(version: 2020_04_17_091041) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -86,6 +86,7 @@ ActiveRecord::Schema.define(version: 2020_04_03_120153) do
     t.decimal "shipping_cost"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "user_id"
     t.index ["shipping_type_id"], name: "index_orders_on_shipping_type_id"
   end
 
@@ -108,6 +109,38 @@ ActiveRecord::Schema.define(version: 2020_04_03_120153) do
     t.datetime "updated_at", null: false
   end
 
+  create_table "user_sessions", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string "email"
+    t.string "crypted_password"
+    t.string "password_salt"
+    t.string "persistence_token"
+    t.string "first_name"
+    t.string "last_name"
+    t.string "company_name"
+    t.string "city"
+    t.string "country"
+    t.string "phone"
+    t.string "zip_code"
+    t.string "street"
+    t.bigint "order_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "login_count", default: 0, null: false
+    t.integer "failed_login_count", default: 0, null: false
+    t.datetime "last_request_at"
+    t.datetime "current_login_at"
+    t.datetime "last_login_at"
+    t.string "current_login_ip"
+    t.string "last_login_ip"
+    t.boolean "admin", default: false, null: false
+    t.index ["order_id"], name: "index_users_on_order_id"
+  end
+
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "addresses", "orders"
   add_foreign_key "line_items", "orders"
@@ -115,4 +148,5 @@ ActiveRecord::Schema.define(version: 2020_04_03_120153) do
   add_foreign_key "order_transitions", "orders"
   add_foreign_key "orders", "shipping_types"
   add_foreign_key "products", "categories"
+  add_foreign_key "users", "orders"
 end

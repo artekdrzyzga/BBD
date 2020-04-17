@@ -1,0 +1,55 @@
+<div class="row">
+  <div class="col-md-2"></div>
+  <div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header text-center">
+        Sign In
+      </div>
+      <div class="card-body">
+        <%= form_for @user_session do |f| %>
+          <%= render 'shared/errors', object: @user_session %>
+          <div class="form-group">
+            <%= f.label :email %>
+            <%= f.email_field :email, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :password %>
+            <%= f.password_field :password, class: 'form-control' %>
+          </div>
+          <div class="form-group">
+            <%= f.label :remember_me %>
+            <%= f.check_box :remember_me %>
+          </div>
+          <%= f.submit "Log in!", class: 'btn btn-primary' %>
+        <% end %>
+      </div>  
+    </div>
+  </div>
+  <div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+     <div class="card-header text-center">
+        New Customer
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+           Register with Fortnum’s to make shopping even easier. Access your bag across devices, view your order history, store useful addresses and be the first to hear Fortnum’s latest news.
+        </div>
+
+       
+      
+       <%= link_to  new_user_path, class: "btn btn-primary" do %>
+         <span class="fa fa-user-plus"> Register Here
+       <% end %>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-2"></div>  
+</div>
+
+
+
+
+
+
+
+

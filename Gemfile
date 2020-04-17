@@ -69,3 +69,7 @@ gem 'ransack'
 gem 'kaminari'
 gem "rails-erd" 
 gem 'rails-i18n'
+gem 'authlogic', '~> 6.0'
+gem 'scrypt' , '~> 3.0'
+
+gem "table_print"

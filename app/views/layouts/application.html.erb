@@ -101,13 +101,34 @@ function magnify(imgID, zoom) {
       <div class="col col-sm-3">
         <%= image_tag("BBD_LOGO.png", size: "120x140") %>
       </div>
-      <div class="col col-sm-6">
+      <div class="col col-sm-5">
         <p class="text-center">By British Design Limited</p>
         <p class="text-center" style="font-size: 12px; margin-top: -30px;">EST 2020 </p>
       </div>
-      <div class="col col-sm-3 text-right">
+      <div class="col col-sm-4 text-right">
            <%=link_to "Help   |",'#', style: 'color:#6c757d'%>
-           <%=link_to "Sign in   |",'#', style: 'color:#6c757d'%>
+       
+           <% if current_user %>
+         
+          <span style="font-size: 10px;"><%= current_user.email %></span>
+
+          
+           <%= link_to  sign_out_path, method: :delete, :class => "koszyk", style: 'color:#6c757d'  do %>
+              <span class="fa fa-sign-out"></span>
+           <% end %>
+
+
+
+        <% else %>
+           <%= link_to  sign_in_path, :class => "koszyk", style: 'color:#6c757d'  do %>
+              <span class="fa fa-sign-in"></span>
+            
+           <% end %>
+
+        <% end %>
+
+
+           
            <%= link_to cart_path, :class => "koszyk", style: 'color:#6c757d'  do %>
             <span class="fa fa-shopping-cart"></span>
             <%= current_cart.line_items.map { |e| e.quantity }.sum %>
@@ -149,28 +170,54 @@ function magnify(imgID, zoom) {
 
      <div class="container-fluid">
     <div class="row">
-<% if controller.controller_name != "cart" %>
-      <div class="col-md-2 border">
-        <h3 class="text-center" >Categories</h3>
-        <ul>
-          <% Category.all.each do |category| %>
-          <li>
-            <%= link_to category.name, category_path(category), style: 'color:#5f5A51; font-size: 20px;' %>
-          </li>
-          <% end %>
-        </ul>
-      </div>
-<%end%>
 
+         <% if controller.controller_name != "cart" && controller.controller_name != "user_sessions" && controller.controller_name != "users" %>
+               <div class="col-md-2 border">
+                 <h3 class="text-center" >Categories</h3>
+                 <ul>
+                   <% Category.all.each do |category| %>
+                   <li>
+                     <%= link_to category.name, category_path(category), style: 'color:#5f5A51; font-size: 20px;' %>
+                   </li>
+                   <% end %>
+                 </ul>
+               </div>
+         
+        
+        
 
       <div class="col-md-10">
 
-       <% flash.each do |key, value| %>
-    <%= content_tag(:div, value, class: "alert alert-#{key}") %>
-  <% end %>
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+           <% end %>
       
         <%= yield %>
       </div>
+
+
+
+        
+        
+         <%else%>
+
+
+
+            
+      <div class="col-md-12">
+
+          <% flash.each do |key, value| %>
+            <%= content_tag(:div, value, class: "alert alert-#{key}") %>
+           <% end %>
+      
+        <%= yield %>
+      </div>
+
+        
+
+         <%end%>
+
+
     </div>
   </div>
 

@@ -5,6 +5,7 @@ class CreateAddresses < ActiveRecord::Migration[5.2]
       t.string :last_name
       t.string :company_name
       t.string :city
+      
       t.string :zip_code
       t.string :street
       t.string :email

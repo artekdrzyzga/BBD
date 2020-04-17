@@ -19,6 +19,7 @@
       <th>Create Date</th>
       <th>Status</th>
       <th>Sum</th>
+      <th>Edit</th>
       <th></th>
     </tr>
   </thead>
@@ -31,8 +32,11 @@
         <td><%= l order.created_at, format: :long %></td>
         <td><%= OrderStateMachine.states_map[order.current_state] %></td>
         <td><%= number_to_currency order.full_cost %></td>
+        <td><%#= order.user.first_name%></td>
         <td>
-          <%= link_to "Edit", admin_order_path(order), class: "btn btn-default btn-xs" %>
+          <%= link_to admin_order_path(order), class: "btn btn-default btn-xs" do %>
+             <span class="fa fa-edit"></span>
+          <%end%>
         </td>
       </tr>
     <% end %>
