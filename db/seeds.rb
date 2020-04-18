@@ -8,7 +8,7 @@ ShippingType.create name: "Courier", cost: 20.0
    category_ids = Category.pluck(:id) 
    
    print "Product "
-     30.times do
+     10.times do
        product = Product.create! name: "#{Faker::Hacker.verb} #{Faker::Hacker.noun}".capitalize,
          description: Faker::Hacker.say_something_smart,
          category_id: category_ids.sample,

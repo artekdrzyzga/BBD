@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
         c = current_cart
         if c.new_record?
           c.shipping_type = ShippingType.first
+          c.user_id = 1
           c.save
           session[:order_id] = c.id
         end

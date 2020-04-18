@@ -127,7 +127,6 @@ ActiveRecord::Schema.define(version: 2020_04_17_091041) do
     t.string "phone"
     t.string "zip_code"
     t.string "street"
-    t.bigint "order_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "login_count", default: 0, null: false
@@ -138,7 +137,6 @@ ActiveRecord::Schema.define(version: 2020_04_17_091041) do
     t.string "current_login_ip"
     t.string "last_login_ip"
     t.boolean "admin", default: false, null: false
-    t.index ["order_id"], name: "index_users_on_order_id"
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -148,5 +146,4 @@ ActiveRecord::Schema.define(version: 2020_04_17_091041) do
   add_foreign_key "order_transitions", "orders"
   add_foreign_key "orders", "shipping_types"
   add_foreign_key "products", "categories"
-  add_foreign_key "users", "orders"
 end

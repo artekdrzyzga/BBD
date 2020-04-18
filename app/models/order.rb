@@ -8,12 +8,12 @@ class Order < ApplicationRecord
   
 
   belongs_to :shipping_type
-  #belongs_to :user
+  belongs_to :user
 
   has_many :line_items 
   has_one :address 
+
   
- 
 
   has_many :transitions, class_name: "OrderTransition", autosave: false
 

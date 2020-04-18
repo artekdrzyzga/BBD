@@ -15,7 +15,7 @@ class CreateUsers < ActiveRecord::Migration[5.2]
       t.string :zip_code
       t.string :street
 
-      t.belongs_to :order, foreign_key: true
+      #t.belongs_to :order, foreign_key: true
 
       t.timestamps
     end

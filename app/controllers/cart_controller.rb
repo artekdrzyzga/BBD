@@ -12,6 +12,9 @@ class CartController < ApplicationController
     @cart = current_cart
     if @cart.update_attributes(cart_attributes)
       @cart.update_attribute(:shipping_cost, @cart.shipping_type.cost)
+
+      @cart.update_attribute(:user_id,current_user.id)
+      
       redirect_to confirmation_cart_path
     else
       render action: :edit
