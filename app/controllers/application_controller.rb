@@ -2,10 +2,12 @@ class ApplicationController < ActionController::Base
     helper_method :current_cart
 
     def current_cart
-        if session[:order_id]
+        if session[:order_id].present? && session[:order_id].kind_of?(Integer)
           Order.find(session[:order_id])
         else
-          Order.new
+          Rails.logger.info("darek:ApplicationController#current_cart:Here is a bug.")
+          # tu jest blad
+          session[:order_id] = Order.new
         end
     end
       

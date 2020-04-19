@@ -5,14 +5,22 @@ class UserSessionsController < ApplicationController
   
     def create
       @user_session = UserSession.new(user_session_params.to_h)
+#      byebug
+
+
       if @user_session.save
         flash[:success] = "Welcome back!"
-        
-        redirect_to root_path
+        if session[:order_id].present? && session[:order_id].kind_of?(Integer)
+          redirect_to edit_cart_path
+        else
+          redirect_to root_path
+        end
         #redirect_back(fallback_location: root_path)
       else
         render :new
       end
+
+
     end
   
     def destroy
