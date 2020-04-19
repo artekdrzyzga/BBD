@@ -1,22 +1,41 @@
 <h1>Delivery Address</h1>
 
+ <% if current_user %>
+<%= current_user.city%>
+<%= current_user.first_name%>
+    
 <div class="row">
   <div class="col-md-6">
     <%= simple_form_for @cart, url: cart_path do |f| %>
-      <%= f.simple_fields_for :address do |a| %>
-        <%= a.input :email %>
-        <%= a.input :first_name %>
-        <%= a.input :last_name %>
-        <%= a.input :city %>
-        <%= a.input :zip_code %>
-        <%= a.input :street %>
-      <% end %>
       <%= f.association :shipping_type, as: :select, prompt: nil %>
       <%= f.input :comment %>
       <%= button_tag class: "btn btn-success btn-lg go_forward" do %>
-        Zapisz i przejdź dalej
+        Save and go forward
         <span class="fa fa-step-forward"></span>
       <% end %>
     <% end %>
   </div>
 </div>
+
+
+
+
+
+
+
+ <%else%>
+ 
+ <%= link_to  sign_in_path, :class => "koszyk", style: 'color:#6c757d'  do %>
+              <span class="fa fa-sign-in"></span>
+            
+           <% end %>
+
+
+ <%end%>
+
+
+
+
+
+
+

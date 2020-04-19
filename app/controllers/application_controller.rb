@@ -1,6 +1,6 @@
 class ApplicationController < ActionController::Base
     helper_method :current_cart
-    
+
     def current_cart
         if session[:order_id]
           Order.find(session[:order_id])
@@ -34,6 +34,9 @@ class ApplicationController < ActionController::Base
       
       helper_method :current_user_session, :current_user
 
+    
+       
+     
 
 
 

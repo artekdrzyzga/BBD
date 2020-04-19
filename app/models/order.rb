@@ -11,13 +11,10 @@ class Order < ApplicationRecord
   belongs_to :user
 
   has_many :line_items 
-  has_one :address 
-
-  
 
   has_many :transitions, class_name: "OrderTransition", autosave: false
 
-  accepts_nested_attributes_for :address
+ # accepts_nested_attributes_for :address
   #accepts_nested_attributes_for :user
   
   delegate :can_transition_to?, :current_state, :history, :last_transition,

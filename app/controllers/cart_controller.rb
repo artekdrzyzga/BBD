@@ -5,7 +5,7 @@ class CartController < ApplicationController
 
   def edit
     @cart = current_cart
-    @cart.build_address if @cart.address.blank?
+    #@cart.build_address if @cart.address.blank?
   end
 
   def update
@@ -13,8 +13,8 @@ class CartController < ApplicationController
     if @cart.update_attributes(cart_attributes)
       @cart.update_attribute(:shipping_cost, @cart.shipping_type.cost)
 
-      @cart.update_attribute(:user_id,current_user.id)
-      
+      @cart.update_attribute(:user_id, 1) 
+
       redirect_to confirmation_cart_path
     else
       render action: :edit
@@ -27,6 +27,9 @@ class CartController < ApplicationController
 
   def finish
     @cart = current_cart
+
+    @cart.update_attribute(:user_id,current_user.id)
+
     @cart.transition_to :confirmed
     session.delete(:order_id)
     flash[:notice] = "Dziękujemy za zamówienie!"
