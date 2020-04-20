@@ -7,7 +7,6 @@ class UserSessionsController < ApplicationController
       @user_session = UserSession.new(user_session_params.to_h)
 #      byebug
 
-
       if @user_session.save
         flash[:success] = "Welcome back!"
         if session[:order_id].present? && session[:order_id].kind_of?(Integer)
