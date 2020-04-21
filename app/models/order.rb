@@ -26,7 +26,7 @@ class Order < ApplicationRecord
     end
 
   def full_cost
-    line_items.map {|e| e.full_price}.sum + shipping_cost 
+   line_items.map {|e| e.full_price}.sum + shipping_cost 
   end
 
   def self.transition_class

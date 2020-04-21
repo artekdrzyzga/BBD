@@ -7,7 +7,15 @@ class UsersController < ApplicationController
     @user = User.new(users_params)
     if @user.save
       flash[:success] = "Account registered!"
-      redirect_to root_path
+      
+      if session[:order_id].present? && session[:order_id].kind_of?(Integer)
+        redirect_to edit_cart_path
+      else
+        redirect_to root_path
+      end
+
+
+      #redirect_to root_path
     else
       render :new
     end
