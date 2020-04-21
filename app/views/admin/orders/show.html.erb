@@ -1,13 +1,13 @@
-<h1>Order Details</h1>
 
+<h1>Order Details</h1>
 <div class="row">
   <div class="col-md-6">
     <table class="table table-striped">
       <thead>
-        <th>Produkt</th>
-        <th>Liczba sztuk</th>
-        <th>Cena jednostkowa</th>
-        <th>Cena całkowita</th>
+        <th>Product</th>
+        <th>Quantity</th>
+        <th>Unit price</th>
+        <th>Total price</th>
       </thead>
       <tbody>
         <% @order.line_items.each do |line_item| %>
@@ -19,7 +19,7 @@
           </tr>
         <% end %>
         <tr>
-          <td>Dostawa: <%= @order.shipping_type.name %></td>
+          <td>Delivery Type: <%= @order.shipping_type.name %></td>
           <td></td>
           <td colspan="2"><%= number_to_currency @order.shipping_cost %></td>
         </tr>
@@ -27,7 +27,7 @@
           <td colspan="4"><hr/></td>
         </tr>
         <tr>
-          <th>Całość</th>
+          <th>Total</th>
           <td></td>
           <td colspan="2"><%= number_to_currency @order.full_cost %></td>
         </tr>
@@ -35,12 +35,13 @@
     </table>
   </div>
   <div class="col-md-6">
+  <h1>Customer Details</h1>
     <address class="address">
-      <%= @order.address.first_name %> <%= @order.address.last_name %>
+      <%= @order.user.first_name %> <%= @order.user.last_name %>
       <br/>
-      <%= @order.address.street %>
+      <%= @order.user.street %>
       <br/>
-      <%= @order.address.zip_code %> <%= @order.address.city %>
+      <%= @order.user.zip_code %> <%= @order.user.city %>
       <%= simple_format @order.comment%>
     </address>
   </div>
@@ -55,7 +56,7 @@
           <option value="<%= state_name %>" <% if !@order.can_transition_to?(state_name) && @order.current_state != state_name %> disabled="disabled"<% end %>><%= human_name %></option>
         <% end %>
       </select>
-      <%= f.submit "Zmień stan" %>
+      <%= f.submit "Change status" %>
     <% end %>
     
 

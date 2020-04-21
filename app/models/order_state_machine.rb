@@ -32,11 +32,11 @@ class OrderStateMachine
   
     def self.states_map
       {
-        "new" => "Niepotwierdzone",
-        "confirmed" => "Złożone przez klienta",
-        "in_progress" => "Przyjęte do realizacji",
-        "shipped" => "Wysłane",
-        "cancelled" => "Anulowane",
+        "new" => "Unconfirmed",
+        "confirmed" => "Submitted by the customer",
+        "in_progress" => "Accepted for implementation",
+        "shipped" => "Shipped",
+        "cancelled" => "Canceled",
       }
     end
   
