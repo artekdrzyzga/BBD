@@ -71,5 +71,10 @@ gem "rails-erd"
 gem 'rails-i18n'
 gem 'authlogic', '~> 6.0'
 gem 'scrypt' , '~> 3.0'
+gem "letter_opener", :group => :development
 
 gem "table_print"
+
+gem 'inky-rb', require: 'inky'       # bundle install   and   rails g inky:install      https://www.driftingruby.com/episodes/mail-previews-and-templates
+# Stylesheet inlining for email
+gem 'premailer-rails'
