@@ -7,7 +7,9 @@ class OrderMailer < ApplicationMailer
   #
   def order_confirmation(order)
    @order = order
-    mail to: "artek.drzyzga@gmail.com"
+  
+   mail(to: @order.user.email , subject: 'Order Confirmation')
+    #mail to: "artek.drzyzga@gmail.com"
   end
 
   # Subject can be set in your I18n file at config/locales/en.yml
