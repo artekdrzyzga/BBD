@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-md-4"></div>
+  <div class="col-md-4">
+    <div class="card mb-4 shadow-sm">
+      <div class="card-header text-center">
+        <h3>Reset Password</h1>
+      </div>
+      <div class="card-body">
+        <div class="form-group">
+          <p class = "lead"> Please enter your email address below and then press "Reset Password"</p>
+        </div>
+        <%= simple_form_for :session, url: password_resets_path  do |f| %>
+          <%= f.input :email %>
+          <%= f.button :submit, "Reset Password",  class: "btn btn-primary"%>
+        <%end%>
+      </div>  
+    </div>
+  </div>
+  <div class="col-md-4"></div>
+</div>

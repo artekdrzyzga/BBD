@@ -1,6 +1,6 @@
 class User < ApplicationRecord
   has_many :orders
-  
+  acts_as_authentic
 
     acts_as_authentic do |c|
         c.crypto_provider = ::Authlogic::CryptoProviders::SCrypt
@@ -35,5 +35,14 @@ class User < ApplicationRecord
       minimum: 8,
       if: :require_password?
   }
+
+  def deliver_password_reset_instructions!
+    reset_perishable_token!
+    PasswordResetMailer.reset_email(self).deliver_now
+  end
+
+
+
+
 
 end

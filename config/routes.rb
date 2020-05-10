@@ -23,6 +23,7 @@ Rails.application.routes.draw do
   resources :user_sessions, only: [:create, :destroy]
   resources :categories
   resources :products
+  resources :password_resets, only: [:new, :create, :edit, :update]
   root to:'products#index'
 
 
