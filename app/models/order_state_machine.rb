@@ -22,7 +22,7 @@ class OrderStateMachine
     end
   
     after_transition(to: :in_progress) do |order, transition|
-      #OrderMailer.order_in_progress(order).deliver
+      OrderMailer.order_in_progress(order).deliver
     end
   
     after_transition(to: :shipped) do |order, transition|
