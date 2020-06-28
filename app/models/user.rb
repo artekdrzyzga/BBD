@@ -37,8 +37,8 @@ class User < ApplicationRecord
   }
 
   def deliver_password_reset_instructions!
-    reset_persistence_token!
-    #reset_perishable_token!
+    #reset_persistence_token!
+    reset_perishable_token!
     PasswordResetMailer.reset_email(self).deliver_now
   end
 
