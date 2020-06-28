@@ -21,18 +21,26 @@ class PasswordResetsController < ApplicationController
   end
 
   def update
-    #byebug
-    @user = User.find_by(perishable_token: params[:id])
-  
-    if @user.update_attributes(:password=>params[:password],:password_confirmation=>params[:password_confirmation])
-      #@user.update_attributes(password_reset_params)
-  
-      flash[:success] = "Password successfully updated!"
-      redirect_to root_path
-    else
+    if params[:password] != params[:password_confirmation]
+      flash[:error] = "Password and password confirmation don't match."
       render :edit
+    else
+      @user = User.find_by(perishable_token: params[:id])
+      if @user.present?
+        if @user.update_attributes(:password => params[:password], :password_confirmation => params[:password_confirmation])
+          flash[:success] = "Password successfully updated!"
+          redirect_to root_path
+        else
+          render :edit
+        end
+      else
+        flash[:error] = "Wrong auth key. check your email"
+        render :edit
+      end
     end
   end
+
+
 
   private
 
