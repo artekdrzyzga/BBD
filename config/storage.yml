@@ -26,7 +26,7 @@ local:
 google:
   service: GCS
   project: bbd1
-  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'].as_json %>
   bucket: bbd1-pics
 google_dev:
   service: GCS
