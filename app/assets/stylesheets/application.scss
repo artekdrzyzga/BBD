@@ -73,3 +73,18 @@
   background-color: #E8DFCE;
  
 }
+
+
+.vertical-rl {
+  writing-mode: vertical-rl;
+  color: #0074d9;
+  display: inline-block;
+}
+
+
+
+div.a {
+  margin: 10px 10px 10px 10px;
+  -ms-transform: rotate(90deg); /* IE 9 */
+  transform: rotate(90deg);
+}

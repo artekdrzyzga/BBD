@@ -21,6 +21,20 @@ local:
 #   credentials: <%= Rails.root.join("path/to/gcs.keyfile") %>
 #   bucket: your_own_bucket
 
+
+
+google:
+  service: GCS
+  project: bbd1
+  credentials: <%= ENV['GOOGLE_APPLICATION_CREDENTIALS'] %>
+  bucket: bbd1-pics
+google_dev:
+  service: GCS
+  project: bbd1
+  credentials: <%= Rails.root.join("config/secrets/bbd1-287309-196919542846.json") %>
+  bucket: bbd1-pics
+
+
 # Use rails credentials:edit to set the Azure Storage secret (as azure_storage:storage_access_key)
 # microsoft:
 #   service: AzureStorage

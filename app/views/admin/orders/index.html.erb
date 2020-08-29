@@ -1,10 +1,12 @@
 <h1>Orders</h1>
 
 <div class="search-form">
-   <%= search_form_for [:admin,@q] do |f| %>
+   <%= search_form_for [:admin, @q] do |f| %>
         <%= f.text_field :user_first_name_cont, placeholder: "First name"%>
         <%= f.text_field :user_last_name_cont, placeholder: "Surname"%>
-        <%= f.search_field :created_at_gteq, class: 'form-control input-sm', 'datepicker' => true %>
+        <%#= f.search_field :created_at_gteq, class: 'form-control input-sm', 'datepicker' => true %>
+        <%= f.label :created_at_gteq %>
+        <%= f.search_field :created_at_gteq, class: 'form-control input-sm w-25' %>
         <%= f.submit "Search" %>
       <%end%>
 </div>

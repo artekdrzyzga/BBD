@@ -79,3 +79,6 @@ gem 'inky-rb', require: 'inky'       # bundle install   and   rails g inky:insta
 # Stylesheet inlining for email
 gem 'premailer-rails'
 gem 'figaro', '~> 1.1', '>= 1.1.1'
+
+
+gem "google-cloud-storage", "~> 1.8", require: false

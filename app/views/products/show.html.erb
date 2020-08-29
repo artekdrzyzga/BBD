@@ -10,29 +10,24 @@
         <div class="col-md-6">  
           <h1 class="text-center"><p><%= @product.name %></p></h1> 
           <p1>Product code: <%= @product.code%></p>
+          <p1>Product dimensions:  Width - <%=@product.width%>cm,    Height - <%=@product.height%>cm</p>
           <p class="lead"><%= number_to_currency(@product.price) %></p>
+          <p class="lead"><%= @product.description %></p> 
           <p class="text-right">
             <%= link_to add_product_cart_path(product_id: @product.id), method: :post, class: "btn btn-primary" do %> 
               <span class="fa fa-shopping-cart"> Add to cart
             <% end %>
-           
-              
-           
             <% if current_cart.line_items.present? %> 
-           
               <%= link_to cart_path,class: "btn btn-primary" do %>
                 <span class="fa fa-shopping-cart"> Go to cart
               <%end%>
             <%end%>
-
-          </p>
-          <p class="lead"><%= @product.description %></p>
+          </p>     
         </div>
       </div>
     </div>
   </div>
 </div>
-
 
 <script>
 /* Initiate Magnify Function
