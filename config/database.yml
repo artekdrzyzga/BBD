@@ -84,6 +84,6 @@ production:
   pool: 5
   timeout: 5000
   username: "postgresql"
-  password: "kalisia1a"
+  password: ""
   database: "design"
   host:   "/cloudsql/bybritishdesign:europe-west2:britishdesign"

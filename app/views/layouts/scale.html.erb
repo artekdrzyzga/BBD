@@ -17,7 +17,7 @@
     <%= javascript_include_tag 'scale', 'data-turbolinks-track': 'reload' %>
 
 	</head>
-	<body class="is-preload">
+	<body class="is-preload" style="background-color: #F6F0E4;">
 
 		<!-- Wrapper -->
 			<div id="wrapper">
@@ -95,6 +95,12 @@
 
 							<!-- Section -->
 								<section>
+
+                                     <div class="container">
+                                       <%= yield %>
+                                    </div>
+
+
 									<header class="major">
 										<h2>Ipsum sed dolor</h2>
 									</header>
@@ -275,27 +281,7 @@
 
   <body style="background-color: #F6F0E4;">  
       
-<nav class="navbar navbar-expand-sm shadow p-3 mb-5 rounded sticky-top" style="background-color: #E8DFCE;">
-    <div class="container >
-      <div class="navbar-header">
-        <a class="navbar-brand" style="font-size: 30px; color: #5F5A51" href="<%= root_path %>"><span class="fa fa-home"></span></a>
-    
-    
-      
-         
-        <%= link_to "Products", admin_products_path, style: 'color:#5f5A51; font-size: 30px;'%>
-        <%= link_to "Categoriess", admin_categories_path, style: 'color:#5f5A51; font-size: 30px;'%>
-        <%= link_to "Orders", admin_orders_path, style: 'color:#5f5A51; font-size: 30px;'%>
-        <%= link_to "Customers", admin_users_path, style: 'color:#5f5A51; font-size: 30px;'%>
-    
-      </div>
-
-
-    </div>
-</nav>
-      <div class="container">
-        <%= yield %>
-      </div>s
+     
 
   </body>
 </html>
