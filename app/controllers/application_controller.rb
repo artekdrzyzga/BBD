@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+  layout 'scale'
     helper_method :current_cart
 
     def current_cart
