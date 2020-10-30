@@ -74,7 +74,7 @@ config.action_mailer.delivery_method = :smtp
 # SMTP settings for gmail
 config.action_mailer.smtp_settings = {
  :address              => "smtp.hosts.co.uk",
- :port                 => 587,
+ :port                 => 25s,
  :user_name            => ENV['gmail_username'],
  :password             => ENV['gmail_password'],
  :authentication       => "plain",
