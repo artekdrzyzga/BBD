@@ -77,7 +77,7 @@ config.action_mailer.smtp_settings = {
  :port                 => 587,
  :user_name            => ENV['gmail_username'],
  :password             => ENV['gmail_password'],
- :authentication       => "plain",
+ :authentication       => "login",
 :enable_starttls_auto => true
 }
   config.action_mailer.default_url_options = { :host => "bbd-shop.herokuapp.com" }
