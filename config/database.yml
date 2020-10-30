@@ -79,11 +79,7 @@ test:
 #     url: <%= ENV['DATABASE_URL'] %>
 #
 production:
-  adapter: postgresql
-  encoding: unicode
-  pool: 5
-  timeout: 5000
-  username: "postgresql"
-  password: ""
-  database: "design"
-  host:   "/cloudsql/bybritishdesign:europe-west2:britishdesign"
+  <<: *default
+  database: paniko_shop1_production
+  username: paniko_shop1
+  password: <%= ENV['PANIKO_SHOP1_DATABASE_PASSWORD'] %>

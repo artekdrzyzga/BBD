@@ -1,4 +1,4 @@
-<h1>Potwierdź zamówienie</h1>
+<h1>Confirm the order</h1>
 
 <table class="table table-striped">
   <thead>
@@ -17,7 +17,7 @@
       </tr>
     <% end %>
     <tr>
-      <td>Dostawa: <%= @cart.shipping_type.name %></td>
+      <td>Shipping: <%= @cart.shipping_type.name %></td>
       <td></td>
       <td colspan="2"><%= number_to_currency @cart.shipping_cost %></td>
     </tr>
@@ -25,7 +25,7 @@
       <td colspan="4"><hr/></td>
     </tr>
     <tr>
-      <th>Całość</th>
+      <th>Total</th>
       <td></td>
       <td colspan="2"><%= number_to_currency @cart.full_cost %></td>
     </tr>
@@ -34,5 +34,5 @@
 
 <%= link_to finish_cart_path, method: :post, class: "btn btn-success btn-lg" do %>
   <span class="fa fa-check"></span>
-  Potwierdzam zamówienie z obowiązkiem zapłaty
+  Confirm the order
 <% end %>

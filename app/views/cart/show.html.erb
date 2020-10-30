@@ -23,7 +23,7 @@
           <td><%= number_to_currency line_item.full_price %></td>
           <td>
             <%= link_to remove_product_cart_path(product_id: line_item.product.id), method: :post do %>
-              <span class="fa fa-trash-o"></span>
+              <span class="fa fa-trash"></span>
             <% end %>
           </td>
         </tr>
