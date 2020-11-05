@@ -19,6 +19,6 @@ module PanikoShop1
     
     # tu jest dodanie nowej czcionki 
     config.assets.enabled = true
-    config.assets.paths << Rails.root.join('/app/assets/fonts')
+    config.assets.paths << Rails.root.join('/app/assets/fonts', '/app/assets/webfonts')
   end
 end

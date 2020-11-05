@@ -1,9 +1,11 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name='viewport' content='width=device-width, initial-scale=1, maximum-scale=1'>
     <title>By British Design</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <%= csrf_meta_tags %>
+<<<<<<< HEAD
     <%= csp_meta_tag %>
 
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -92,72 +94,22 @@ function magnify(imgID, zoom) {
   
   
   
+=======
+    <%= csp_meta_tag %>§
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+>>>>>>> af6860a887f08420abdae31582ded6aa47a36d5f
   </head>
 
-  <body style="background-color: #F6F0E4;">
+
+   <body style="background-color: #F6F0E4;">
+
+   <div class='container'>
  
-
-  <div class="container-fluid p-1">
-    <div class="row justify-content-sm-center;" style="height: 120px;"">
-      <div class="col col-sm-3">
-        <%= image_tag("BBD_LOGO.png", size: "120x140") %>
-      </div>
-      <div class="col col-sm-5">
-        <p class="text-center">By British Design Limited</p>
-        <p class="text-center" style="font-size: 12px; margin-top: -30px;">EST 2020 </p>
-      </div>
-      <div class="col col-sm-4 text-right">
-           <%=link_to "Help   |",'#', style: 'color:#6c757d'%>
-       
-          
-         <%# byebug %>
-         
-           <% if current_user %>
-         
-          <span style="font-size: 10px;"><%= current_user.email %></span>
-
-          
-           <%= link_to  sign_out_path, method: :delete, :class => "koszyk", style: 'color:#6c757d'  do %>
-              <span class="fa fa-sign-out"></span>
-           <% end %>
-
-
-
-        <% else %>
-           <%= link_to  sign_in_path, :class => "koszyk", style: 'color:#6c757d'  do %>
-              <span class="fa fa-sign-in"></span>
-            
-           <% end %>
-
-        <% end %>
-
-
-           
-           <%= link_to cart_path, :class => "koszyk", style: 'color:#6c757d'  do %>
-            <span class="fa fa-shopping-cart"></span>
-            <%= current_cart.line_items.map { |e| e.quantity }.sum %>
-            products for
-            <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %>
-          <% end %>
-
-
-     <% if controller.controller_name == "products" && controller.action_name == "index" %>
-       
-        <div class="search-form">
-          <%= search_form_for [@q] do |f| %>
-            <%= f.text_field :name_cont, placeholder: "Product Name"%>
-            <%= f.submit "Search" %>
-          <%end%>
-        </div>
-
-      <%end%>
-
-      </div>
-    </div>  
-  </div>
-  
-  
+  <header>  
+    <nav class="navbar navbar-expand-lg shadow p-3 mb-5 rounded sticky-top  navbar-light" style="background-color: #E8DFCE;">  
     
+<<<<<<< HEAD
 <nav class="navbar navbar-expand-sm shadow p-3 mb-5 rounded sticky-top" style="background-color: #E8DFCE;">
     <div class="container" >
       <div class="navbar-header">
@@ -217,17 +169,71 @@ function magnify(imgID, zoom) {
       </div>
 
         
+=======
+      <a class="navbar-brand" style="font-size: 30px" href="<%= root_path %>"><span class="fa fa-home" style="color: #5F5A51" ></span></a>
+   
+       <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+       </button>
+       <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+         <ul class="navbar-nav mr-auto mt-2 mt-lg-0">
+           <li class="nav-item active">
+             <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="#">Privacy policy</a>
+           </li>
+           <li class="nav-item">
+             <a class="nav-link" href="#">Regulations</a>
+           </li>
 
-         <%end%>
+         </ul>
+         <form class="form-inline my-2 my-lg-0">
+           <input class="form-control mr-sm-2" type="search" placeholder="Search">
+           <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+         </form>
+       </div>
+    </nav>
+	</header>
+	
+  <aside>
+		<nav>
+			<ul> 
+        <h3 class="text-center" >Categories</h3>
+				<% Category.all.each do |category| %>
+          <li>
+            <%= link_to category.name, category_path(category), style: 'color:#5f5A51' %>
+          </li>
+        <% end %>
+			</ul>
+		</nav>
+	</aside>
+>>>>>>> af6860a887f08420abdae31582ded6aa47a36d5f
 
 
-    </div>
-  </div>
 
 
+   
+   
+   
+   
+   
+      <%= yield %>
 
+ 
+ 
+ 
 
+ 	<footer>
+		<p>Footstep.pl © 2013</p>
+	</footer>
 
+ 
+
+     </div>
+ 
+ 
+ 
  
   </body>
 </html>
