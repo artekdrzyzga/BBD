@@ -13,7 +13,6 @@
  *= require_tree .
  *= require_self
  */
-<<<<<<< HEAD
  @import "bootstrap";
 
  
@@ -22,20 +21,14 @@
    font-family: "GillSans";
    src: url('/assets/GillSansMTStd-Book');
  }
-=======
->>>>>>> af6860a887f08420abdae31582ded6aa47a36d5f
 
  @import "bootstrap";
 
-<<<<<<< HEAD
  p {
     font-family: "GillSans", sans-serif;    
     font-size: 40px;
     color: #5F5A51;
  }
-=======
- * {padding:0;margin:0;}
->>>>>>> af6860a887f08420abdae31582ded6aa47a36d5f
 
 html {width:100%;height:100%;}
 body {font-family:Arial, Helvetica, Sans-serif;font-size:14px;line-height:1.5;font-weight:400;color:#434343;background:#FFF;}
