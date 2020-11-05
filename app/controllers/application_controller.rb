@@ -1,4 +1,7 @@
 class ApplicationController < ActionController::Base
+  skip_before_action :verify_authenticity_token
+  
+  layout 'scale'
     helper_method :current_cart
 
     def current_cart

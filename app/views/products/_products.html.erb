@@ -1,31 +1,38 @@
-
-<% products.each_slice(3) do |slice| %>
-  <div class="row">
-    <% slice.each do |product| %>
-      <div class="col-md-4">
-        <div class="card mb-4 shadow-sm">
-          <%= link_to product_path(product) do %>
-            <%#= image_tag(product.picture,  class: 'img-fluid', :size => '100xauto') if product.picture.attached? %> 
-            <%= image_tag(product.thumb, class: 'img-fluid') if product.picture.attached? %> 
-          <% end %>
-          <div class="card-body">
-            <p class="text-center"><%= link_to product.name, product, style: 'color:#5f5A51;'%></p>
-            <p class="card-text">  
-              <div class="div1"> 
-                <p><%= simple_format(truncate(product.description, length: 90), style: 'color:#5f5A51; font-size: 20px;' ) %></p>
-              </div>
-            </p>
-            <div class="d-flex justify-content-between align-items-center">
-              <div class="btn-group">
-                 <%= link_to add_product_cart_path(product_id: product.id), method: :post, class: "btn btn-primary" do %>
+<section>
+  <header class="major">
+    <h2>Latest products</h2>
+  </header>
+  <div class="posts">
+    <% products.each_slice(3) do |slice| %>
+      <% slice.each do |product| %>
+        <article>
+          <a href="#" class="image"><%=image_tag(product.thumb)%> </a> 
+          <h3> <%= link_to product.name, product, style: 'color:#5f5A51;'%> </h3>
+			    <p><%= simple_format(truncate(product.description, length: 90))%></p>
+					<ul class="actions">
+            
+              <%= link_to add_product_cart_path(product_id: product.id), method: :post, class: "button" do %>
                    <span class="fa fa-shopping-cart"> Add to cart
-                 <% end %>
-              </div>
-              <small class="text-muted"><%= number_to_currency product.price %></small>
-            </div>
-          </div>
-        </div>
-      </div>
-    <% end %>
+              <% end %>
+
+            <li>
+            <%= number_to_currency product.price %>
+            </li>
+
+
+
+
+
+					</ul>
+		    </article>
+      <%end%>
+    <%end%>
   </div>
-<%end%>
+</section>                                				
+										
+					
+									
+										
+									
+									
+								
