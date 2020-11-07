@@ -8,26 +8,21 @@
 	</head>
 	<body class="is-preload">
 
+
+
+
+
 		<!-- Wrapper -->
 			<div id="wrapper">
-
 				<!-- Main -->
 					<div id="main">
 						<div class="inner">
-
 							<!-- Header -->
 								<header id="header">
-
-                                                   
-
-
-                                                    <%= link_to cart_path, :class => "koszyk", style: 'color:#6c757d'  do %>
+                                    <%= link_to cart_path, :class => "koszyk", style: 'color:#6c757d'  do %>
                                         <span class="fa fa-shopping-cart"></span>
-                                        <%= current_cart.line_items.map { |e| e.quantity }.sum %>
-                                        products for
-                                       <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %>
+                                        <%= current_cart.line_items.map { |e| e.quantity }.sum %> products for <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %>
                                      <% end %>
-                                      
                                      <% if current_user %>
                                        <span><%= current_user.email %></span>
                                         <%= link_to  sign_out_path, method: :delete  do %>Log Out
@@ -38,7 +33,6 @@
                                            <span class="fa fa-sign-in-alt"></span>
                                        <% end %>
                                      <% end %>
-
 									<ul class="icons">
 										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
 										<li><a href="https://www.facebook.com/By-British-Design-111278024036098" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
@@ -46,18 +40,9 @@
 										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
 									</ul>
-
 								</header>
-
-
-        
-
-
-                                          	<!-- Banner -->
-                               <% if controller.controller_name != "cart" && controller.controller_name != "user_sessions" && controller.controller_name != "users" && controller.controller_name != "password_resets"   %>
-                              
-							   
-							   
+                            <!-- Banner -->
+                               <% if controller.controller_name != "cart" && controller.controller_name != "user_sessions" && controller.controller_name != "users" && controller.controller_name != "password_resets"   %> 
 							       <section id="banner">
 									<div class="content">
 										<header>
@@ -75,36 +60,18 @@
 									<span class="image object">	
                                          <%= image_tag("front.jpg") %> 
 									</span>
-								</section>
-							   
-							   
-							   
-							   
+								  </section>
 							   
 							   <%else%>
-                               
-
-							  
-							  
-							   <%end%>
-							
-
+                               <%end%>
 							<!-- Section -->
 							<!-- Section -->
 							   <div class="container">
                                        <%= yield %>
                                 </div>
-
-
 						</div>
 					</div>
-
 				<!-- Sidebar -->
-
-
-
-
-
 					<div id="sidebar">
 						<div class="inner">
                          
@@ -130,12 +97,7 @@
                                        <% end %>
                                      </ul>
 								</nav>
-
-
-
-
-
-                                   <!-- Section -->
+                            <!-- Section -->
 							<!-- Section -->
 								<section>
 									<header class="major">
@@ -155,14 +117,6 @@
 								<footer id="footer">
 									<p class="copyright">&copy; Untitled. All rights reserved. Demo Images: <a href="https://unsplash.com">Unsplash</a>. Design: <a href="https://html5up.net">HTML5 UP</a>.</p>
 								</footer>
-                          
-
-
-
-
-
-
-
 							<!-- Section -->							
 						</div>
 					</div>
@@ -170,8 +124,10 @@
 			</div>
 
 		<!-- Scripts -->
-
+ 
 	</body>
+ 
     <%= stylesheet_link_tag    'scale', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'scale', 'data-turbolinks-track': 'reload' %>
+
 </html>
