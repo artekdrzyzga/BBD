@@ -5,7 +5,7 @@
   <row>
     <columns>
       <h2>Order Confirmation For <%=@order.user.first_name %> <%=@order.user.last_name %></h2>
-      <p>Thanks for shopping with us! Free collection by appoitment also available</p>
+      <p>Thanks for shopping with us! Free collection by appoitment also available.</p>
 
       <spacer size="16"></spacer>
 
@@ -14,7 +14,7 @@
           <columns large="6">
             <p>
               <strong>Payment Method</strong><br/>
-              Bank Transfer
+              Visa Card 
             </p>
             <p>
               <strong>Email Address</strong><br/>
