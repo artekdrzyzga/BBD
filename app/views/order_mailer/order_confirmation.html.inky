@@ -5,7 +5,7 @@
   <row>
     <columns>
       <h2>Order Confirmation For <%=@order.user.first_name %> <%=@order.user.last_name %></h2>
-      <p>Thanks for shopping with us! Additional information</p>
+      <p>Thanks for shopping with us! Free collection by appoitment also available</p>
 
       <spacer size="16"></spacer>
 
@@ -82,14 +82,15 @@
     </columns>
     <columns large="3">
       <p>
-        Call us at 09000000000 <br/>
+        Call us at 07854 111776 <br/>
         Email us at info@bybritishdesign.com
       </p>
     </columns>
     <columns large="3">
       <p>
-        AF20 1BT<br/>
-        330 Holloway Road 
+        N11 3DA<br/>
+        28a-b Queens Parade
+        Friern Barnet Road
         London
       </p>
     </columns>
