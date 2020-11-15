@@ -7,11 +7,10 @@
       <% slice.each do |product| %>
         <article>
 
-
-    
-
-
           <a href=<%=product_path(product)%> class="image"><%=image_tag(product.thumb)%> </a> 
+
+
+
           <h3> <%= link_to product.name, product, style: 'color:#5f5A51;'%> </h3>
 			    <p><%= simple_format(truncate(product.description, length: 90))%></p>
 					<ul class="actions">
@@ -23,10 +22,6 @@
             <li>
             <%= number_to_currency product.price %>
             </li>
-
-
-
-
 
 					</ul>
 		    </article>
