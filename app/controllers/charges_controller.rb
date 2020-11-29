@@ -3,7 +3,7 @@ class ChargesController < ApplicationController
   def new
   end
  
-    def create
+#   def create
     # # wywalic
     #   # Amount in cents
     #   @amount = 234567
@@ -26,7 +26,7 @@ class ChargesController < ApplicationController
     #   redirect_to new_charge_path
     # end
   
-   end
+ #  end
 
 
   
