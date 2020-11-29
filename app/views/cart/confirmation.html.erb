@@ -32,7 +32,24 @@
   </tbody>
 </table>
 
-<%= link_to finish_cart_path, method: :post, class: "button" do %>
+
+
+
+
+<%#= link_to finish_cart_path, method: :post, class: "button" do %>
   <span class="fa fa-check"></span>
-  Confirm the order
+  <!-- Confirm the order -->
+<%# end %>
+
+
+<%= form_tag(finish_cart_path(@cart)) do %>
+ 
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description = <%= current_cart.id %>
+    data-amount = <%= (@cart.full_cost.to_f*100).to_s %>
+    data-currency = "gbp"
+    data-locale="auto">
+  </script>
+  
 <% end %>

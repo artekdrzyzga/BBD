@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  get 'art/index'
+  
   delete '/sign_out', to: 'user_sessions#destroy', as: :sign_out
   get '/sign_in', to: 'user_sessions#new', as: :sign_in
 
@@ -8,9 +10,13 @@ Rails.application.routes.draw do
       post :add_product
       post :remove_product
       get :confirmation
-      post :finish
+      #post :finish
     end
   end
+
+  post "cart/:id/finish" => "cart#finish", :as => "finish_cart"
+
+
   namespace :admin do
     root to: 'products#index'
     resources :categories
@@ -18,7 +24,8 @@ Rails.application.routes.draw do
     resources :orders
     resources :users
   end
-
+  
+  resources :charges
   resources :users, only: [:new, :create]
   resources :user_sessions, only: [:create, :destroy]
   resources :categories

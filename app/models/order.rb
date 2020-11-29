@@ -26,7 +26,15 @@ class Order < ApplicationRecord
     end
 
   def full_cost
-   line_items.map {|e| e.full_price}.sum + shipping_cost 
+   line_items.map {|e| e.full_price}.sum + shipping_cost
+  end
+
+  def full_cost_in_pence
+    (full_cost*100).to_i.to_s
+  end
+
+  def currency
+    "gbp"
   end
 
   def self.transition_class
@@ -40,5 +48,17 @@ class Order < ApplicationRecord
   def self.transition_name
     :transitions
   end
+
+
+  def process_payment!(source = "tok_amex")
+    Stripe::Charge.create({
+      amount: full_cost_in_pence,
+      currency: currency,
+      source: source, # obtained with Stripe.js
+      metadata: {order_id: id.to_s},
+    })
+  end
+
+
 
 end

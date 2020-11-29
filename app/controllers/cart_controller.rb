@@ -22,17 +22,51 @@ class CartController < ApplicationController
   end
 
   def confirmation
+    # generowanie danych
     @cart = current_cart
+#byebug
+  
+    # Stripe::Charge.create({
+    #   amount: 2000,
+    #   currency: 'gbp',
+    #   source: 'tok_amex', # obtained with Stripe.js
+    #   metadata: {order_id: '6735'},
+    # })
+
+#   begin    
+#     @customer = Stripe::Customer.create({
+#       email: params[:stripeEmail],
+#       source: params[:stripeToken],
+#     })
+  
+#     @charge = Stripe::Charge.create({
+#       customer: customer.id,
+#       amount: @amount,
+#       description: 'Rails Stripe customer',
+#       currency: 'gbp',
+#     })
+  
+
+#   rescue Stripe::CardError => e
+#     flash[:error] = e.message
+# #    redirect_to new_charge_path
+#   end
   end
 
+
+
   def finish
+    # yeah to zostawic!
     @cart = current_cart
+    @cart.process_payment!
 
     @cart.update_attribute(:user_id,current_user.id)
-
     @cart.transition_to :confirmed
     session.delete(:order_id)
     flash[:notice] = "Dziękujemy za zamówienie!"
+ 
+    #redirect_to new_charge_path
+
     redirect_to root_path
   end
   

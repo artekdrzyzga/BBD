@@ -31,3 +31,6 @@
 
 en:
   hello: "Hello world"
+  cart:
+    tank_you: "Thank you for the order"
+
