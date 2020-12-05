@@ -4,14 +4,9 @@ class Order < ApplicationRecord
     transition_class: OrderTransition,
     initial_state: :pending
   ]
-
-  
-
   belongs_to :shipping_type
   belongs_to :user
-
   has_many :line_items 
-
   has_many :transitions, class_name: "OrderTransition", autosave: false
 
  # accepts_nested_attributes_for :address
@@ -51,8 +46,11 @@ class Order < ApplicationRecord
 
 
   def process_payment!(source = "tok_amex")
+       
     Stripe::Charge.create({
+     
       amount: full_cost_in_pence,
+      description: 'Rails Stripe customer',
       currency: currency,
       source: source, # obtained with Stripe.js
       metadata: {order_id: id.to_s},
