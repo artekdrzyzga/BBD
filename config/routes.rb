@@ -1,6 +1,5 @@
 Rails.application.routes.draw do
-
-  get 'art/index'
+  
   
   delete '/sign_out', to: 'user_sessions#destroy', as: :sign_out
   get '/sign_in', to: 'user_sessions#new', as: :sign_in
@@ -23,13 +22,18 @@ Rails.application.routes.draw do
     resources :products
     resources :orders
     resources :users
+    resources :settings
   end
   
   resources :charges
   resources :users, only: [:new, :create]
   resources :user_sessions, only: [:create, :destroy]
   resources :categories
-  resources :products
+  resources :products do
+    collection do
+      get :suprise
+    end
+  end
   resources :password_resets, only: [:new, :create, :edit, :update]
   root to:'products#index'
 

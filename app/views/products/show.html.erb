@@ -1,3 +1,28 @@
+	<section id="banner">
+			<div class="content">
+				<header>
+					<h1><%= @product.name %></h1>
+					<p><%= number_to_currency(@product.price) %></p>
+				</header>
+				<p><%= @product.description %></p>
+				<ul class="actions">
+					<%= link_to add_product_cart_path(product_id: @product.id), method: :post, class: "button" do %>
+                   <span class="fa fa-shopping-cart"> Add to cart
+          <% end %>
+				</ul>
+			</div>
+			<span class="image object">
+          <%= image_tag(@product.picture) if @product.picture.attached? %> 
+			</span>
+	</section>
+
+
+
+
+
+
+<!-- Wrapper 
+
 <div class="col-md-12">
   <div class="card mb-4 shadow-sm">
     <div class="card-body">
@@ -29,8 +54,4 @@
   </div>
 </div>
 
-<script>
-/* Initiate Magnify Function
-with the id of the image, and the strength of the magnifier glass:*/
-magnify("myimage", 3);
-</script>
+-->

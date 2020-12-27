@@ -17,10 +17,18 @@
 						<div class="inner">
 							<!-- Header -->
 								<header id="header">
-                                    <%= link_to cart_path, :class => "koszyk", style: 'color:#6c757d'  do %>
+
+
+
+                                <div id="content-placeholder">
+                                    <%= link_to cart_path, :class => "koszyk", style: 'color:#6c757d' do %>
                                         <span class="fa fa-shopping-cart"></span>
                                         <%= current_cart.line_items.map { |e| e.quantity }.sum %> products for <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %>
                                      <% end %>
+                                </div>
+
+
+
                                      <% if current_user %>
                                        <span><%= current_user.email %></span>
                                         <%= link_to  sign_out_path, method: :delete  do %>Log Out
@@ -41,7 +49,7 @@
 									</ul>
 								</header>
                             <!-- Banner -->
-                               <% if controller.controller_name != "cart" && controller.controller_name != "user_sessions" && controller.controller_name != "users" && controller.controller_name != "password_resets"   %> 
+                               <% if controller.controller_name != "cart" && controller.controller_name != "user_sessions" && controller.controller_name != "users" && controller.controller_name != "password_resets"  && controller.action_name != "show" %> 
 							       <section id="banner">
 									<div class="content">
 										<header>
@@ -100,12 +108,15 @@
 										<h2>Get in touch</h2>
 									</header>
 									<p>
-									Ladies and gentlemen we will not give up our seasonal joy during this current lockdown. We shouldn't allow anything or anyone to ruin the most magical part of the year! Let's keep positive, hopeful and have faith that Christmas will be as great and as beautiful as it's been every past year! We at By British Design sadly have been forced to close our doors until lock down has ended but we will be re-opening from 10am to 10pm, 7 days a week once allowed! 
-                      				We look forward to welcoming you back to celebrate the fun and festive cheer. In the meantime if you see something that you like in our shop front window or on FB OR INSTA PLEASE call me for a click, collect or postage purchase. 
-									Wishing you all love, peace and most importantly health.. 									
+                          <!-- 
+                                        Ladies and gentlemen we will not give up our seasonal joy during this current lockdown. We shouldn't allow anything or anyone to ruin the most magical part of the year! Let's keep positive, hopeful and have faith that Christmas will be as great and as beautiful as it's been every past year! We at By British Design sadly have been forced to close our doors until lock down has ended but we will be re-opening from 10am to 10pm, 7 days a week once allowed! We look forward to welcoming you back to celebrate the fun and festive cheer. In the meantime if you see something that you like in our shop front window or on FB OR INSTA PLEASE call me for a click, collect or postage purchase. Wishing you all love, peace and most importantly health..
+
+    -->
+                                
+									  <%=@setting.desc_menu%>									
 									</p>
 									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#">info@bybritishdesign.com</a></li>
+										<li class="icon solid fa-envelope"><a href="#"><%#=@setting.email%>artek.drzyzga@gmail.com</a></li>
 										<li class="icon solid fa-phone">07854 111776</li>
 										<li class="icon solid fa-home">28a-b Queens Parade, Friern Barnet Road, Friern Barnet,
                                           London, N11 3DA<br/></li>

@@ -1,15 +1,18 @@
 class CartController < ApplicationController
   def show
     @cart = current_cart
+    @setting =Setting.last
   end
 
   def edit
     @cart = current_cart
+    @setting =Setting.last
     #@cart.build_address if @cart.address.blank?
   end
 
   def update
     @cart = current_cart
+    @setting =Setting.last
     if @cart.update_attributes(cart_attributes)
       @cart.update_attribute(:shipping_cost, @cart.shipping_type.cost)
 
@@ -23,14 +26,15 @@ class CartController < ApplicationController
 
   def confirmation
     @cart = current_cart
+    @setting =Setting.last
   end
 
   def finish
     # yeah to zostawic!
     @cart = current_cart
+    @setting =Setting.last
    # @cart.process_payment! # platnosc zostala przeniesiona do medelu i tu jest wywolana
 
-    
    customer = Stripe::Customer.create({
      email: params[:stripeEmail],
      source: params[:stripeToken],
@@ -65,9 +69,10 @@ class CartController < ApplicationController
       order.line_items.new(product: product, quantity: 1, unit_price: product.price, item_name: product.name)
       order.save
     end
-    flash[:notice] = "Dodano do koszyka"
-    redirect_back(:fallback_location => root_path)
-
+    #flash[:notice] = "Dodano do koszyka"
+    #redirect_back(:fallback_location => root_path)
+   
+   
   end
 
 

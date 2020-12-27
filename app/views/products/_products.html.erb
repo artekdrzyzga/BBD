@@ -15,7 +15,7 @@
 			    <p><%= simple_format(truncate(product.description, length: 90))%></p>
 					<ul class="actions">
             
-              <%= link_to add_product_cart_path(product_id: product.id), method: :post, class: "button" do %>
+              <%= link_to add_product_cart_path(product_id: product.id), method: :post, class: "button", remote: true do %>
                    <span class="fa fa-shopping-cart"> Add to cart
               <% end %>
 

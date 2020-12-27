@@ -24,6 +24,8 @@
         <%= link_to "Categoriess", admin_categories_path, style: 'color:#5f5A51; font-size: 30px;'%>
         <%= link_to "Orders", admin_orders_path, style: 'color:#5f5A51; font-size: 30px;'%>
         <%= link_to "Customers", admin_users_path, style: 'color:#5f5A51; font-size: 30px;'%>
+         <%= link_to "Settings",new_admin_setting_path, style: 'color:#5f5A51; font-size: 30px;'%>
+
     
       </div>
 
@@ -32,7 +34,7 @@
 </nav>
       <div class="container">
         <%= yield %>
-      </div>s
+      </div>
 
   </body>
 </html>

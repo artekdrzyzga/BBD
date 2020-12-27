@@ -46,7 +46,7 @@
  
   <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
     data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
-    data-description = <%= current_cart.id %>
+    data-description =  "Your order numbes is: <%= current_cart.id %>"
     data-amount = <%= (@cart.full_cost.to_f*100).to_s %>
     data-currency = "gbp"
     data-locale="auto">
