@@ -10,6 +10,7 @@
 
 	<body class="is-preload">
 
+			
 		<!-- Wrapper -->
 			<div id="wrapper">
 				<!-- Main -->
@@ -18,15 +19,16 @@
 							<!-- Header -->
 								<header id="header">
 
-
-
                                 <div id="content-placeholder">
+								    <a id="sidenav-button" class="sidenav-button sidenav-button-bg" href="#" data-activates="sidenav" style="top: 14px; position: fixed; right: 18px;"><span class="text">
+                                    <%= current_cart.line_items.map { |e| e.quantity }.sum %> products for <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %>
+                                    </span></a>
+
                                     <%= link_to cart_path, :class => "koszyk", style: 'color:#6c757d' do %>
                                         <span class="fa fa-shopping-cart"></span>
                                         <%= current_cart.line_items.map { |e| e.quantity }.sum %> products for <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %>
                                      <% end %>
                                 </div>
-
 
 
                                      <% if current_user %>
@@ -116,7 +118,7 @@
 									  <%=@setting.desc_menu%>									
 									</p>
 									<ul class="contact">
-										<li class="icon solid fa-envelope"><a href="#"><%#=@setting.email%>artek.drzyzga@gmail.com</a></li>
+										<li class="icon solid fa-envelope"><a href="#"><%=@setting.email%></a></li>
 										<li class="icon solid fa-phone">07854 111776</li>
 										<li class="icon solid fa-home">28a-b Queens Parade, Friern Barnet Road, Friern Barnet,
                                           London, N11 3DA<br/></li>

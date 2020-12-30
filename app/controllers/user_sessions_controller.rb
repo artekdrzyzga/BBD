@@ -1,9 +1,11 @@
 class UserSessionsController < ApplicationController
     def new
       @user_session = UserSession.new
+      @setting =Setting.last
     end
   
     def create
+      
       @user_session = UserSession.new(user_session_params.to_h)
 #      byebug
 

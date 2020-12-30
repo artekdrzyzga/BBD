@@ -324,6 +324,7 @@ GEM
       activesupport (>= 4.0)
       sprockets (>= 3.0.0)
     statesman (5.0.0)
+    sticky-rails (1.0.3)
     stripe (5.28.0)
     table_print (1.5.7)
     thor (1.0.1)
@@ -385,6 +386,7 @@ DEPENDENCIES
   spring
   spring-watcher-listen (~> 2.0.0)
   statesman (~> 5.0.0)
+  sticky-rails
   stripe
   table_print
   turbolinks (~> 5)

@@ -26,7 +26,8 @@ class Admin::SettingsController < Admin::BaseController
   def setting_params
     params.require(:setting).permit(
       :email,
-      :desc_menu
+      :desc_menu,
+      :desc_top
     )
   end
 
