@@ -5,6 +5,7 @@ class UsersController < ApplicationController
   end
 
   def create
+    @setting =Setting.last
     @user = User.new(users_params)
     if @user.save
       flash[:success] = "Account registered!"
