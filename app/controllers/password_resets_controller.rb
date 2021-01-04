@@ -2,6 +2,7 @@ class PasswordResetsController < ApplicationController
 
   
   def new
+    @setting =Setting.last
   end
 
   def create
@@ -17,6 +18,7 @@ class PasswordResetsController < ApplicationController
   end
 
   def edit
+    @setting =Setting.last
     @user = User.find_by(perishable_token: params[:id])
   end
 

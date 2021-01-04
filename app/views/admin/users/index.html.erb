@@ -8,6 +8,7 @@
        <th>Current login at</th>
        <th>Login count</th>
        <th>Current login IP</th>
+       <th>Edit</th>
     </tr>
    </thead>
 
@@ -20,8 +21,17 @@
           <td><%= user.last_login_at %></td> 
           <td><%= user.current_login_at %></td> 
           <td><%= user.login_count %></td> 
-           <td><%= user.current_login_ip %></td> 
-          
+          <td><%= user.current_login_ip %></td> 
+          <td>
+            <%= link_to edit_admin_user_path(user), class: "btn btn-default btn-xs" do %>
+              <span class="fa fa-edit"></span>
+            <%end%>
+          </td>
+          <td>
+            <%= link_to admin_user_path(user), method: :delete, class: "btn btn-default btn-xs",data: {confirm: "Are you sure ?"} do %>
+              <span class="fa fa-trash"></span>
+            <%end%>
+          </td>         
         </tr>
       <% end %>
      </tbody> 

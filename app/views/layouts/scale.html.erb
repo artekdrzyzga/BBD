@@ -22,7 +22,7 @@
                                 <div id="content-placeholder">
 								 
 
-                                    <%= link_to cart_path, :class => "koszyk", style:'position: fixed; color:#6c757d' do %>
+                                    <%= link_to cart_path, :class => "koszyk", style:'position: fixed; text-shadow: 5px 5px 15px #000000; z-index: 9999; color: black	' do %>
                                         <span class="fa fa-shopping-cart"></span>
                                         <%= current_cart.line_items.map { |e| e.quantity }.sum %> products for <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %>
                                      <% end %>
@@ -79,13 +79,20 @@
 				<!-- Sidebar -->
 					<div id="sidebar">
 						<div class="inner">
-                         
-                         <!-- Search -->
+						<!-- Search -->
 								<section id="search" class="alt">
 									<form method="post" action="#">
 										<input type="text" name="query" id="query" placeholder="Search" />
 									</form>
 								</section>
+						<!--  Logo image   
+						        <section>
+								  <div class="mini-posts">
+								    <article>
+									  <a href="#" class="image"><%= image_tag "pic101.png"%></a>
+									</article>
+								  </div>
+								</section> -->
 
 							<!-- Menu -->
 								<nav id="menu">

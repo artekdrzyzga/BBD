@@ -15,8 +15,6 @@ class UsersController < ApplicationController
       else
         redirect_to root_path
       end
-
-
       #redirect_to root_path
     else
       render :new

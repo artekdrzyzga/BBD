@@ -33,7 +33,7 @@ class CartController < ApplicationController
     # yeah to zostawic!
     @cart = current_cart
     @setting =Setting.last
-   # @cart.process_payment! # platnosc zostala przeniesiona do medelu i tu jest wywolana
+
 
    customer = Stripe::Customer.create({
      email: params[:stripeEmail],
@@ -47,8 +47,6 @@ class CartController < ApplicationController
        currency: 'gbp',
     })
   
-
-
 
 
     @cart.update_attribute(:user_id,current_user.id)
