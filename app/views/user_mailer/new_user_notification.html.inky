@@ -36,9 +36,10 @@
       <spacer size="32"></spacer>
 
         <center>
-          <img src="https://storage.cloud.google.com/bbd1-pics/bbd_logo.jpg?_ga=2.175591202.-1622347023.1597587755">
+          <img src="https://storage.googleapis.com/bbd1-pics/bbd_logo.jpg">
         </center>
       
+   
 
       <spacer size="16"></spacer>
       <h3>Dear <%= @user.first_name%> <%= @user.last_name%> </h3>
