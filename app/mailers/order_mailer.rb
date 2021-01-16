@@ -33,11 +33,11 @@ class OrderMailer < ApplicationMailer
 
 
 
-  #def order_shipped
-   # @order = order
+  def order_shipped(order)
+    @order = order
 
-    #mail to: "to@example.org"
-#  end
+    mail(to: @order.user.email , subject: 'Order Confirmation')
+   end
 
 
 
