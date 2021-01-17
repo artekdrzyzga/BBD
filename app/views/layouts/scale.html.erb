@@ -18,17 +18,6 @@
 						<div class="inner">
 							<!-- Header -->
 								<header id="header">
-
-                                <div id="content-placeholder">
-                                    <%= link_to cart_path, :class => "koszyk", style:'position: fixed; text-shadow: 5px 5px 15px #000000; z-index: 9999; color: black; background-color: white; border-color: black; box-shadow:5px 5px 15px #000000;
-    border: 1px solid white;
-    border-radius: 100%; height: 50px; width: 50px' do %>
-                                        <span class="fa fa-shopping-cart"></span>
-                                        <%= current_cart.line_items.map { |e| e.quantity }.sum %> <!-- products for <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %> -->
-                                     <% end %>
-                                </div>
-
-
                                      <% if current_user %>
                                        <span><%= current_user.email %></span>
                                         <%= link_to  sign_out_path, method: :delete  do %>Log Out
@@ -47,7 +36,23 @@
 										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
 										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
 									</ul>
-								</header>
+								
+                  
+                  <div id="content-placeholder">
+                    <%= link_to cart_path, :class => "koszyk", style:'position: fixed; right: 10px; z-index: 9999; color: black; background-color: white; box-shadow:5px 5px 15px #000000; border: 1px solid white; border-radius: 100%; height: 50px; width: 50px; text-align: center' do %>
+                      <span class="fa fa-shopping-cart" style="margin: 13px">
+                      <%= current_cart.line_items.map { |e| e.quantity }.sum %> <!-- products for <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %> -->
+                      </span>
+									  <% end %>
+                  </div>	
+
+  
+		
+
+                 
+
+                </header>
+
                             <!-- Banner -->
                                <% if controller.controller_name != "cart" && controller.controller_name != "user_sessions" && controller.controller_name != "users" && controller.controller_name != "password_resets"  && controller.action_name != "show" %> 
 							       <section id="banner">
