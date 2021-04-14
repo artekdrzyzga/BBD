@@ -27,6 +27,9 @@ class UserSessionsController < ApplicationController
     def destroy
       current_user_session.destroy
       flash[:success] = "Goodbye!"
+      # if user logout with open cart ??
+      session.delete(:order_id)
+
       redirect_to root_path
     end
   

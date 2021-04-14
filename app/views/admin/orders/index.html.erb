@@ -4,7 +4,6 @@
    <%= search_form_for [:admin, @q] do |f| %>
         <%= f.text_field :id_eq, placeholder: "Order number"%>
         <%= f.text_field :user_last_name_cont, placeholder: "Surname"%>
-        
         <%= f.submit "Search" %>
       <%end%>
 </div>
