@@ -48,7 +48,8 @@ class Admin::ProductsController < Admin::BaseController
       :price,
       :picture,
       :width,
-      :height
+      :height, 
+      :quantity,
     )
   end
 
