@@ -17,34 +17,24 @@ Gem::Specification.new do |s|
   s.files = ["ext/scrypt/Rakefile".freeze]
   s.homepage = "https://github.com/pbhogan/scrypt".freeze
   s.licenses = ["BSD-3-Clause".freeze]
-  s.rubyforge_project = "scrypt".freeze
-  s.rubygems_version = "2.7.9".freeze
+  s.rubygems_version = "3.2.16".freeze
   s.summary = "scrypt password hashing algorithm.".freeze
 
-  s.installed_by_version = "2.7.9" if s.respond_to? :installed_by_version
+  s.installed_by_version = "3.2.16" if s.respond_to? :installed_by_version
 
   if s.respond_to? :specification_version then
     s.specification_version = 4
+  end
 
-    if Gem::Version.new(Gem::VERSION) >= Gem::Version.new('1.2.0') then
-      s.add_runtime_dependency(%q<ffi-compiler>.freeze, [">= 1.0", "< 2.0"])
-      s.add_development_dependency(%q<awesome_print>.freeze, [">= 1", "< 2"])
-      s.add_development_dependency(%q<rake>.freeze, [">= 9", "< 13"])
-      s.add_development_dependency(%q<rdoc>.freeze, [">= 4", "< 5"])
-      s.add_development_dependency(%q<rspec>.freeze, [">= 3", "< 4"])
-      s.add_development_dependency(%q<rubocop>.freeze, [">= 0.76.0", "< 1.0.0"])
-      s.add_development_dependency(%q<rubocop-gitlab-security>.freeze, [">= 0.1.1", "< 0.2"])
-      s.add_development_dependency(%q<rubocop-performance>.freeze, [">= 1.5.0", "< 1.6.0"])
-    else
-      s.add_dependency(%q<ffi-compiler>.freeze, [">= 1.0", "< 2.0"])
-      s.add_dependency(%q<awesome_print>.freeze, [">= 1", "< 2"])
-      s.add_dependency(%q<rake>.freeze, [">= 9", "< 13"])
-      s.add_dependency(%q<rdoc>.freeze, [">= 4", "< 5"])
-      s.add_dependency(%q<rspec>.freeze, [">= 3", "< 4"])
-      s.add_dependency(%q<rubocop>.freeze, [">= 0.76.0", "< 1.0.0"])
-      s.add_dependency(%q<rubocop-gitlab-security>.freeze, [">= 0.1.1", "< 0.2"])
-      s.add_dependency(%q<rubocop-performance>.freeze, [">= 1.5.0", "< 1.6.0"])
-    end
+  if s.respond_to? :add_runtime_dependency then
+    s.add_runtime_dependency(%q<ffi-compiler>.freeze, [">= 1.0", "< 2.0"])
+    s.add_development_dependency(%q<awesome_print>.freeze, [">= 1", "< 2"])
+    s.add_development_dependency(%q<rake>.freeze, [">= 9", "< 13"])
+    s.add_development_dependency(%q<rdoc>.freeze, [">= 4", "< 5"])
+    s.add_development_dependency(%q<rspec>.freeze, [">= 3", "< 4"])
+    s.add_development_dependency(%q<rubocop>.freeze, [">= 0.76.0", "< 1.0.0"])
+    s.add_development_dependency(%q<rubocop-gitlab-security>.freeze, [">= 0.1.1", "< 0.2"])
+    s.add_development_dependency(%q<rubocop-performance>.freeze, [">= 1.5.0", "< 1.6.0"])
   else
     s.add_dependency(%q<ffi-compiler>.freeze, [">= 1.0", "< 2.0"])
     s.add_dependency(%q<awesome_print>.freeze, [">= 1", "< 2"])
