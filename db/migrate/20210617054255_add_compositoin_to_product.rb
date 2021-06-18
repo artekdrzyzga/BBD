@@ -4,3 +4,4 @@ class AddCompositoinToProduct < ActiveRecord::Migration[5.2]
     add_column :products, :composition, :string
   end
 end
+  
