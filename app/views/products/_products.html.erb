@@ -1,7 +1,8 @@
 <section>
   <header class="major">
-    <h2>Latest products</h2>
+   
   </header>
+  <%#= paginate @products %>		
   <div class="posts">
     <% products.each_slice(3) do |slice| %>
       <% slice.each do |product| %>
@@ -10,11 +11,14 @@
 
         <article>
          
-          <a href=<%=product_path(product)%> class="image"><%=image_tag(product.thumb)%> </a> 
+         <h3> <%= link_to product.name, product, style: 'color:#5f5A51;'%> </h3>
+
+
+          <a href=<%=product_path(product)%> class="image"><%=image_tag(product.thumb) if product.picture.attached? %> </a> 
 
       
 
-          <h3> <%= link_to product.name, product, style: 'color:#5f5A51;'%> </h3>
+          
 			    <p><%= simple_format(truncate(product.description, length: 90))%></p>
 					<ul class="actions">
             
@@ -35,8 +39,12 @@
              
                <li  > 
                <h5>
+                
+                <div style = "text-align: right;">
                Avaiable:    
             <%=product.quantity%>
+                </div>
+
             </h5>
             </li>
 
@@ -57,7 +65,7 @@
   </div>
 </section>                                				
 										
-					
+<%#= paginate @products %>					
 									
 										
 									

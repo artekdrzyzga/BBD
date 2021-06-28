@@ -50,6 +50,7 @@ class Admin::ProductsController < Admin::BaseController
       :width,
       :height, 
       :quantity,
+      :status
     )
   end
 

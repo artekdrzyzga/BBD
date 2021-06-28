@@ -11,7 +11,7 @@ class UserSessionsController < ApplicationController
 
       if @user_session.save
         flash[:success] = "Welcome back!"
-        if session[:order_id].present? && session[:order_id].kind_of?(Integer)
+        if session[:order_id].present? && session[:order_id].kind_of?(Integer) && current_cart.line_items.map { |e| e.quantity }.sum > 0   #must be something in the cart && current_cart.line_items.map { |e| e.quantity }.sum > 0
           redirect_to edit_cart_path
         else
           redirect_to root_path
@@ -28,7 +28,8 @@ class UserSessionsController < ApplicationController
       current_user_session.destroy
       flash[:success] = "Goodbye!"
       # if user logout with open cart ??
-      session.delete(:order_id)
+      
+      # session.delete(:order_id)
 
       redirect_to root_path
     end

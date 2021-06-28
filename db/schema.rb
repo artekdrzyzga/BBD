@@ -87,7 +87,7 @@ ActiveRecord::Schema.define(version: 2021_06_19_133855) do
     t.datetime "updated_at", null: false
     t.integer "width"
     t.integer "height"
-    t.decimal "quantity"
+    t.integer "quantity"
     t.string "composition"
     t.integer "status"
     t.index ["category_id"], name: "index_products_on_category_id"
