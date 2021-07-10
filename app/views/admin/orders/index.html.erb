@@ -1,11 +1,11 @@
 <h1>Orders</h1>
 
 <div class="search-form">
-   <%= search_form_for [:admin, @q] do |f| %>
-        <%= f.text_field :id_eq, placeholder: "Order number"%>
-        <%= f.text_field :user_last_name_cont, placeholder: "Surname"%>
-        <%= f.submit "Search" %>
-      <%end%>
+  <%= search_form_for [:admin, @q], :builder => SimpleForm::FormBuilder do |f| %>
+    <%= f.input :id_eq, input_html: {value: ""} %>
+    <%= f.input :user_last_name_cont, input_html: {value: ""} %>
+    <%= f.submit "Search" %>
+  <%end%>
 </div>
 
 

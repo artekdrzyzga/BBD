@@ -6,8 +6,7 @@
   <%= f.input :width %>
   <%= f.input :height %>
   <%= f.input :quantity %>
-  <%= f.input :status %>
-  <p> Status 0 - visible   Status 1 - invisible</p>  
+  <%= f.input :status, :label => "Visible" %>
   
   <%= f.association :category %>
   <%= f.input :picture, as: :file %>
