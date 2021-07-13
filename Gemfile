@@ -85,4 +85,4 @@ gem 'figaro', '~> 1.1', '>= 1.1.1'
 gem "google-cloud-storage", "~> 1.8", require: false
 gem 'font_awesome5_rails'
 gem 'stripe'
-
+  

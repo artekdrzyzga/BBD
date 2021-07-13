@@ -9,7 +9,7 @@
         <%if product.status == true %>
           <article>
             <h3> <%= link_to product.name, product, style: 'color:#5f5A51;'%> </h3>
-            <a href=<%=product_path(product)%> class="image"><%=image_tag(product.thumb) if product.picture.attached? %> </a> 
+            <a href=<%=product_path(product)%> class="image"><%=image_tag product.thumb if product.picture.attached? %> </a> 
             <p><%= simple_format(truncate(product.description, length: 90))%></p>
 					  <ul class="actions">
               <% if product.quantity != 0 %>
