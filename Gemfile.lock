@@ -207,7 +207,8 @@ GEM
       actionmailer (>= 3)
       premailer (~> 1.7, >= 1.7.9)
     public_suffix (4.0.5)
-    puma (3.12.6)
+    puma (5.3.2)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -374,7 +375,7 @@ DEPENDENCIES
   mini_magick (~> 4.8)
   pg (>= 0.18, < 2.0)
   premailer-rails
-  puma (~> 3.11)
+  puma (~> 5.3)
   rails (~> 5.2.3)
   rails-erd
   rails-i18n
