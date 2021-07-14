@@ -8,7 +8,7 @@ class Product < ApplicationRecord
 
 
   def thumb
-   return self.picture.variant(resize: '400x400!', gravity: 'center')
+   return self.picture.variant(resize: '400x400>', gravity: 'center')
   end
 
 
