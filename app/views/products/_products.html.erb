@@ -3,7 +3,7 @@
   <h2>Latest products</h2> 
    <!--  <h2>Latest products</h2>  -->
   </header>
-  <%#= paginate @products %>		
+  <%= paginate @products %>		
   <div class="posts">
     <% products.each_slice(3) do |slice| %>
       <% slice.each do |product| %>
@@ -33,4 +33,4 @@
     <%end%>
   </div>
 </section>                                						
-<%#= paginate @products %>	
+<%= paginate @products %>	

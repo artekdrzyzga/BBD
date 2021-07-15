@@ -3,7 +3,7 @@ class ProductsController < ApplicationController
     @products=Product.all
     @setting =Setting.last
     @q = Product.ransack(params[:q])
-    @products= @q.result(distinct: true).page(params[:page]).per(9)
+    @products= @q.result(distinct: true).page(params[:page]).per(6)
   end
 
   def suprise
