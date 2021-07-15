@@ -1,5 +1,6 @@
 <section>
   <header class="major">
+  <h2>Latest products</h2> 
    <!--  <h2>Latest products</h2>  -->
   </header>
   <%#= paginate @products %>		
@@ -9,32 +10,27 @@
         <%if product.status == true %>
           <article>
             <h3> <%= link_to product.name, product, style: 'color:#5f5A51;'%> </h3>
-            <a href=<%=product_path(product)%> class="image"><%=image_tag product.thumb if product.picture.attached? %> </a> 
             <p><%= simple_format(truncate(product.description, length: 90))%></p>
-					  <ul class="actions">
-              <% if product.quantity != 0 %>
+					  
+            <% if product.quantity != 0 %>
                 <%= link_to add_product_cart_path(product_id: product.id), method: :post, class: "button", remote: true do %>
                 <span class="fa fa-shopping-cart"> Add to cart
               <% end %>
              <%end%>
-            <li>
-            <%= number_to_currency product.price %>
-            </li>
-            <li> 
-              <h5>
-                <div style = "text-align: right;">
-                  Avaiable:    
-                  <%=product.quantity%>
-                </div>
-              </h5>
-            </li>
-					  </ul>
+             <div style="display: flex; justify-content: flex-end">
+               <%= number_to_currency product.price %>
+             </div>
+             <ul class="actions"> 
+               <li></li>
+					   </ul>
+
+
+         <a href=<%=product_path(product)%> class="image"><%=image_tag product.thumb if product.picture.attached? %> </a> 
+ 
 		     </article>
         <%end%> 
       <%end%>
     <%end%>
   </div>
 </section>                                						
-<%#= paginate @products %>					
-									
-				
+<%#= paginate @products %>	
