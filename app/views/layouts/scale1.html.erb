@@ -1,0 +1,163 @@
+<!DOCTYPE HTML>
+<html>
+	<head>
+		<title>By British Design</title>
+		<meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=no" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+		  <script src="https://code.jquery.com/jquery-1.11.3.min.js"></script>   
+	
+	  
+	</head>
+	
+
+	<body class="is-preload">
+
+			
+		<!-- Wrapper -->
+			<div id="wrapper">
+				<!-- Main -->
+					<div id="main">
+						<div class="inner">
+							<!-- Header -->
+								<header id="header">
+                                     <% if current_user %>
+                                       <span><%= current_user.email %></span>
+                                        <%= link_to  sign_out_path, method: :delete  do %>Log Out
+                                           <span class="fa fa-sign-out-alt"></span>
+                                        <% end %>
+                                     <% else %>
+                                       <%= link_to  sign_in_path  do %>Log In
+                                           <span class="fa fa-sign-in-alt"></span>
+                                       <% end %>    <!--    <i class="fab fa-instagram"></i>-->
+                                     <% end %>
+									<ul class="icons">
+									     <li><%= link_to "", root_path, class: 'icon solid fa-home'%></li> 
+                                         <!--  <li><a href="https://bbd-shop.herokuapp.com/" data-turbolinks="false" class="icon solid fa-home"><span class="label">Twitter</span></a></li>	-->
+										<li><a href="#" class="icon brands fa-twitter"><span class="label">Twitter</span></a></li>
+										<li><a href="https://www.facebook.com/By-British-Design-111278024036098" class="icon brands fa-facebook-f"><span class="label">Facebook</span></a></li>
+										<li><a href="#" class="icon brands fa-snapchat-ghost"><span class="label">Snapchat</span></a></li>
+										<li><a href="#" class="icon brands fa-instagram"><span class="label">Instagram</span></a></li>
+										<li><a href="#" class="icon brands fa-medium-m"><span class="label">Medium</span></a></li>
+									</ul>
+								
+                  
+                  <div id="content-placeholder">
+                    <%= link_to cart_path, :class => "koszyk", style:'position: fixed; right: 10px; z-index: 9999; color: black; background-color: white; box-shadow:5px 5px 15px #000000; border: 1px solid white; border-radius: 100%; height: 50px; width: 50px; text-align: center' do %>
+                      <span class="fa fa-shopping-cart" style="margin: 13px">
+                      <%= current_cart.line_items.map { |e| e.quantity }.sum %> 
+				   <!-- products for <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %> -->
+                      </span>
+									  <% end %>
+                  </div>	
+
+                </header>
+
+                            <!-- Banner -->
+                               <% if controller.controller_name != "cart" && controller.controller_name != "user_sessions" && controller.controller_name != "users" && controller.controller_name != "password_resets"%>  <!--  && controller.action_name != "show" -->
+							       <section id="banner">
+									<div class="content">
+										<header>
+											<h1>By British Design</h1>
+										</header>
+										<p>BY BRITISH DESIGN- pop up Christmas store, opening on Saturday the 17th of October. We offer beautiful exquisite  decorations from Gisela Graham, Enchante, Sage, Festive and many other high end brands. Our very own hand crafted, one off designed unique wreaths and baubles will be showcased and sold! 
+                                           Join us at 28a-b Queens Parade, Friern Barnet Road, Friern Barnet, London, N11 3DA. 
+                                           Monday to Saturday from 9.30am to 7.00pm. 
+                                           Sunday 10.00am to 5.00pm</p>
+										<ul class="actions">
+											<li><a href="#" class="button big">Find out More</a></li>
+										</ul>
+									</div>
+									<span class="image object">	
+                                         <%= image_tag("front.jpg") %> 
+									</span>
+								  </section> 
+							   <%else%>
+                               <%end%>
+							<!-- YIELD -->
+							   <div class="container">
+                                       <%= yield %>
+                                </div>
+							<!-- YIELD -->	
+						</div>
+					</div>
+				<!-- Sidebar -->
+					<div id="sidebar">
+						<div class="inner">
+						<!-- Search -->
+								<section id="search" class="alt">
+									<form method="post" action="#">
+										<input type="text" name="query" id="query" placeholder="Search" />
+									</form>
+								</section>
+						<!--  Logo image   
+						        <section>
+								  <div class="mini-posts">
+								    <article>
+									  <a href="#" class="image"><%= image_tag "pic101.png"%></a>
+									</article>
+								  </div>
+								</section> -->
+
+							<!-- Menu -->    
+							 <nav id="menu">
+							  <header class="major">
+								  <h2>Menu</h2>
+								</header>
+								<ul> 
+                                  <% Category.all.each do |category| %>
+                                    <li>
+									  <% if category.subcategorys.count != 0 %>
+                                        <span class="opener"><%= category.name%></span>
+                                        <ul>
+                                          <li><%= link_to "All.....#{category.name}", category_path(category), data: { no_turbolink: true }%></li>
+										  <% Subcategory.all.each do |subcategory| %>
+                                            <%if category.id == subcategory.category_id%>
+											  <li><%= link_to subcategory.name, subcategory_path(subcategory), data: { no_turbolink: true }%></li>	
+											<%end%>  
+                                          <%end%>  
+									    </ul>									
+									  <%else%>	 
+			                            <%= link_to category.name, category_path(category)%>
+									  <%end%>
+                                    </li>
+                                 <% end %>
+                                </ul>
+							 </nav>
+             
+							<!-- Section -->
+								<section>
+									<header class="major">
+										<h2>Get in touch</h2>
+									</header>
+									<p>
+                          <!-- 
+                                        Ladies and gentlemen we will not give up our seasonal joy during this current lockdown. We shouldn't allow anything or anyone to ruin the most magical part of the year! Let's keep positive, hopeful and have faith that Christmas will be as great and as beautiful as it's been every past year! We at By British Design sadly have been forced to close our doors until lock down has ended but we will be re-opening from 10am to 10pm, 7 days a week once allowed! We look forward to welcoming you back to celebrate the fun and festive cheer. In the meantime if you see something that you like in our shop front window or on FB OR INSTA PLEASE call me for a click, collect or postage purchase. Wishing you all love, peace and most importantly health..
+
+    -->
+                                
+									  <%=@setting.desc_menu%>									
+									</p>
+									<ul class="contact">
+										<li class="icon solid fa-envelope"><a href="#"><%=@setting.email%></a></li>
+										<li class="icon solid fa-phone">07854 111776</li>
+										<li class="icon solid fa-home">28a-b Queens Parade, Friern Barnet Road, Friern Barnet,
+                                          London, N11 3DA<br/></li>
+									</ul>
+								</section>
+
+							<!-- Footer -->
+								<footer id="footer">
+									<p class="copyright">&copy; By The British Design. All rights reserved.</p>
+								</footer>
+							<!-- Section -->							
+						</div>
+					</div>
+			</div>
+		<!-- Scripts -->
+	</body>
+    <%= stylesheet_link_tag    'scale', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'scale', 'data-turbolinks-track': 'reload' %> 
+
+</html>

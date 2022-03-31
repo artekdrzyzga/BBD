@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>By British Design</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%#= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+   
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+  </head>
+
+  <body>  
+      
+<nav class="navbar navbar-expand-sm shadow p-3 mb-5 rounded sticky-top" style="background-color: #E8DFCE;">
+    <div class="container >
+      <div class="navbar-header">
+        <a class="navbar-brand" style="font-size: 30px; color: #5F5A51" href="<%= root_path %>"><span class="fa fa-home"></span></a>
+    
+        <%= link_to "Products", admin_products_path, style: 'color:#5f5A51; font-size: 20px;'%>
+        <%= link_to "Categories", admin_categories_path, style: 'color:#5f5A51; font-size: 20px;'%>
+        <%= link_to "Subcategories", admin_subcategories_path, style: 'color:#5f5A51; font-size: 20px;'%>
+        <%= link_to "Orders", admin_orders_path, style: 'color:#5f5A51; font-size: 20px;'%>
+        <%= link_to "Customers", admin_users_path, style: 'color:#5f5A51; font-size: 20px;'%>
+        <%= link_to "Settings",  edit_admin_setting_path(id: 1), style: 'color:#5f5A51; font-size: 20px;'%>
+     
+    
+      </div>
+
+
+    </div>
+</nav>
+      <div class="container">
+        <%= yield %>
+      </div>
+
+  </body>
+    <%= stylesheet_link_tag    'scale', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'scale', 'data-turbolinks-track': 'reload' %> 
+</html>

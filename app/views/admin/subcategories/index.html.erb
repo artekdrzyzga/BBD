@@ -1,0 +1,50 @@
+<div class="search-form">
+  <%= search_form_for [:admin, @q], :builder => SimpleForm::FormBuilder do |f| %> 
+     <div class="row">
+     <!--  <div class="col-4"><%= f.input :code_cont, input_html: {value: ""} %></div>    -->
+       <div class="col-4"><%= f.input :name_cont, input_html: {value: ""} %></div>
+       <div class="col-4" style="text-align:right"><%= f.submit "Search" %></div>
+    </div>
+  <%end%>
+</div>
+
+<%= link_to new_admin_subcategory_path, class: "btn btn-success" do %>
+  <span class="fa fa-plus"></span> Add new Subcategory
+<% end %>
+
+
+<table class="table table-striped">
+  <thead>
+    <tr>
+      <th><%= sort_link(@q, :id, 'Id', default_order: :desc) %> </th>
+       <th><%= sort_link(@q, :name, 'Category name', default_order: :desc) %> </th>
+     <!-- <th>Category name</th> --> 
+      <th>Subcategory name</th>
+      <th>Edit</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @subcategories.each do |subcategory| %>
+    <tr> 
+       
+       <td><%= subcategory.category.id %></td>
+       <td><%= subcategory.category.name %></td>
+      <td><%= subcategory.name %></td>
+
+      <td>
+        <%= link_to edit_admin_subcategory_path(subcategory), class: "btn btn-default btn-xs" do %>
+          <span class="fa fa-edit"></span>
+        <%end%>
+      </td>
+      <td>
+        <%#= link_to admin_subcategory_path(subcategory), method: :delete, class: "btn btn-default btn-xs",data: {confirm: "Are you sure ?"} do %>
+          <span class="fa fa-trash"></span>
+        <%#end%>
+      </td>
+    </tr>
+    <% end %>
+  </tbody>
+</table>
+

@@ -1,0 +1,40 @@
+<% if @cart.line_items.empty? %>
+  <p class="text-center">Your shopping cart is empty!</p>
+  <p class="text-center">
+         <%= link_to  "Continue Shopping", root_path, class: "btn btn-primary", data:{ turbolinks: "false" }%>
+  </p>
+<% else %>
+
+ <h1>Your cart</h1>
+  <table class="table table-striped">
+    <thead>
+      <th>Product</th>
+      <th>Quantity</th>
+      <th>Unit price</th>
+      <th>Total price</th>
+      <th></th>
+    </thead>
+    <tbody>
+      <% @cart.line_items.each do |line_item| %>
+        <tr>
+          <td><%= link_to line_item.item_name, product_path(line_item.product) %>
+          <td><%= line_item.quantity %></td>
+          <td><%= number_to_currency line_item.unit_price %></td>
+          <td><%= number_to_currency line_item.full_price %></td>
+          <td>
+            <%= link_to remove_product_cart_path(product_id: line_item.product.id), method: :post do %>
+              <span class="fa fa-trash"></span>
+            <% end %>
+          </td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+
+  <p>
+    <%= link_to edit_cart_path, class: "button",data:{ turbolinks: "false" } do %>
+      Proceed to Checkout
+      <span class="fa fa-step-forward"></span>
+    <% end %>
+  </p>
+<% end %>

@@ -1,0 +1,80 @@
+<%= form_for [:admin, @product], remote: true do |f| %>
+  <div class="col-12">
+    <div class="row">
+      <div class="col-5"> 
+        <%= f.label :code %>
+        <%= f.text_field :code %><br />
+      </div>
+      <div class="col-7">
+        <%= f.label :name %>
+        <%= f.text_field :name %><br />   
+      </div>
+    </div>     
+    <div class="row">
+      <div class="col-7">
+        <%= f.label :price %>
+         <%= f.text_field :price %><br />
+      </div>
+      <div class="col-5">
+        <%= f.label :quantity%>
+        <%= f.text_field :quantity %><br />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+       <%= f.label :description %>
+       <%= f.text_area :description %><br />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-6">
+         <%= f.label :width %>
+         <%= f.text_field :width %><br />
+      </div>
+      <div class="col-6">
+          <%= f.label :height %>
+          <%= f.text_field :height %><br />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-12">
+        <%= f.label :composition %>
+        <%= f.text_field :composition%><br />
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-4">
+        <%= f.label :status %>
+
+         <%#= f.check_box :status, {}, true, false %>
+        <%= f.text_field :status%> <br />
+
+         <!-- 
+																<input type="checkbox" id="demo-copy" name="demo-copy">
+																<label for="demo-copy">Visible</label>
+
+             -->
+
+      </div>
+      <div class="col-4">
+        <%= f.label :category_id %>
+        <%= f.collection_select :category_id, Category.order(:name), :id, :name, include_blank: true %><br />
+      </div>
+      <div class="col-4">    
+        <%= f.label :subcategory %>
+        <%= f.grouped_collection_select :subcategory_id, Category.order(:name), :subcategorys, :name, :id, :name, include_blank: true %><br />
+        <%#= f.grouped_collection_select :state_id, Country.order(:name), :states, :name, :id, :name, include_blank: true %>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-7">
+        <%= f.label :picture %><br />
+        <%= f.file_field :picture, as: :file %>
+      </div>  
+      <div class="col-5">
+          <%= f.label :picture, "Update"%><br />
+          <%= f.submit class: "btn btn-success" %>
+      </div>
+    </div>       
+  </div>    
+<%end%>

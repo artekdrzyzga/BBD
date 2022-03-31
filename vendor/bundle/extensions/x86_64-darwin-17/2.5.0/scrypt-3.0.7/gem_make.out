@@ -1,0 +1,15 @@
+current directory: /Users/arturdrzyzga/paniko_shop1/vendor/bundle/gems/scrypt-3.0.7/ext/scrypt
+/Users/arturdrzyzga/.rvm/rubies/ruby-2.5.1/bin/ruby -rrubygems /Users/arturdrzyzga/paniko_shop1/vendor/bundle/gems/rake-13.0.1/exe/rake RUBYARCHDIR=/Users/arturdrzyzga/paniko_shop1/vendor/bundle/extensions/x86_64-darwin-17/2.5.0/scrypt-3.0.7 RUBYLIBDIR=/Users/arturdrzyzga/paniko_shop1/vendor/bundle/extensions/x86_64-darwin-17/2.5.0/scrypt-3.0.7
+mkdir -p x86_64-darwin
+/Users/arturdrzyzga/.rvm/rubies/ruby-2.5.1/bin/ruby -I/Users/arturdrzyzga/paniko_shop1/vendor/bundle/gems/ffi-compiler-1.0.1/lib/ffi-compiler/fake_ffi -I../../lib/scrypt /Users/arturdrzyzga/paniko_shop1/vendor/bundle/gems/ffi-compiler-1.0.1/lib/ffi-compiler/exporter.rb ../../lib/scrypt/scrypt_ext.rb ./scrypt_ext.h
+gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -std=c99 -msse -msse2 -arch x86_64   -o x86_64-darwin/crypto_scrypt.o -c ./crypto_scrypt.c
+gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -std=c99 -msse -msse2 -arch x86_64   -o x86_64-darwin/crypto_scrypt_smix.o -c ./crypto_scrypt_smix.c
+gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -std=c99 -msse -msse2 -arch x86_64   -o x86_64-darwin/crypto_scrypt_smix_sse2.o -c ./crypto_scrypt_smix_sse2.c
+gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -std=c99 -msse -msse2 -arch x86_64   -o x86_64-darwin/insecure_memzero.o -c ./insecure_memzero.c
+gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -std=c99 -msse -msse2 -arch x86_64   -o x86_64-darwin/memlimit.o -c ./memlimit.c
+gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -std=c99 -msse -msse2 -arch x86_64   -o x86_64-darwin/scrypt_calibrate.o -c ./scrypt_calibrate.c
+gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -std=c99 -msse -msse2 -arch x86_64   -o x86_64-darwin/scrypt_ext.o -c ./scrypt_ext.c
+gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -std=c99 -msse -msse2 -arch x86_64   -o x86_64-darwin/scryptenc_cpuperf.o -c ./scryptenc_cpuperf.c
+gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -std=c99 -msse -msse2 -arch x86_64   -o x86_64-darwin/sha256.o -c ./sha256.c
+gcc -fexceptions -O -fno-omit-frame-pointer -fno-strict-aliasing -Wall -std=c99 -msse -msse2 -arch x86_64   -o x86_64-darwin/warnp.o -c ./warnp.c
+gcc -bundle -o x86_64-darwin/libscrypt_ext.bundle x86_64-darwin/crypto_scrypt.o x86_64-darwin/crypto_scrypt_smix.o x86_64-darwin/crypto_scrypt_smix_sse2.o x86_64-darwin/insecure_memzero.o x86_64-darwin/memlimit.o x86_64-darwin/scrypt_calibrate.o x86_64-darwin/scrypt_ext.o x86_64-darwin/scryptenc_cpuperf.o x86_64-darwin/sha256.o x86_64-darwin/warnp.o -fexceptions -arch x86_64 

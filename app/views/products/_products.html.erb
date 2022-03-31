@@ -1,0 +1,39 @@
+<section>
+  <header class="major"> 
+   <!--  <h2>Latest products</h2>  -->
+  </header>
+   <div data-turbolinks="false">
+     <%= paginate @products %>
+   </div>  		
+  <div class="posts">
+    <% products.each_slice(3) do |slice| %>
+      <% slice.each do |product| %>
+        <%if product.status == true %>
+          <article>
+            <h3> <%= link_to product.name, product, style: 'color:#5f5A51;', data:{ turbolinks: "false" } %> </h3>
+            <p><%= simple_format(truncate(product.description, length: 90))%></p>
+					  
+            <% if product.quantity != 0 %>
+                <%= link_to add_product_cart_path(product_id: product.id), method: :post, class: "button", remote: true do %>
+                <span class="fa fa-shopping-cart"> Add to cart
+              <% end %>
+             <%end%>
+             <div style="display: flex; justify-content: flex-end">
+               <%= number_to_currency product.price %>
+             </div>
+             <ul class="actions"> 
+               <li></li>
+					   </ul>
+
+          <div data-turbolinks="false">
+            <a href=<%=product_path(product)%> class="image"><%=image_tag product.thumb if product.picture.attached? %> </a> 
+          </div>
+		     </article>
+        <%end%> 
+      <%end%>
+    <%end%>
+  </div>
+</section>           
+ <div data-turbolinks="false">                   						
+   <%= paginate @products %>	
+ </div>  

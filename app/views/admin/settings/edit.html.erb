@@ -1,0 +1,8 @@
+<%= simple_form_for [:admin, @setting] do |f| %>
+  <%= f.input :email %>
+  <%= f.input :desc_menu %>
+  <%= f.input :desc_top %>
+  <%= f.input :picture, as: :file %>
+
+  <%= f.submit class: "btn btn-success" %>
+<% end %>

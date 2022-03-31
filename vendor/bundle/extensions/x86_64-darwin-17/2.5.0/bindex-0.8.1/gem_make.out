@@ -1,0 +1,15 @@
+current directory: /Users/arturdrzyzga/paniko_shop1/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+/Users/arturdrzyzga/.rvm/rubies/ruby-2.5.1/bin/ruby -r ./siteconf20200329-51618-yssl3n.rb extconf.rb
+creating Makefile
+
+current directory: /Users/arturdrzyzga/paniko_shop1/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" clean
+
+current directory: /Users/arturdrzyzga/paniko_shop1/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR="
+compiling cruby.c
+linking shared-object skiptrace/internal/cruby.bundle
+
+current directory: /Users/arturdrzyzga/paniko_shop1/vendor/bundle/gems/bindex-0.8.1/ext/skiptrace
+make "DESTDIR=" install
+/usr/local/opt/coreutils/bin/ginstall -c -m 0755 cruby.bundle ./.gem.20200329-51618-g7iu2h/skiptrace/internal

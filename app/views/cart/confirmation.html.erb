@@ -1,0 +1,73 @@
+<h1>Confirm the order</h1>
+
+<table class="table table-striped">
+  <thead>
+    <th>Product</th>
+    <th>Quantity</th>
+    <th>Unit price</th>
+    <th>Total price</th>
+  </thead>
+  <tbody>
+    <% @cart.line_items.each do |line_item| %>
+      <tr>
+        <td><%= link_to line_item.item_name, product_path(line_item.product) %>
+        <td><%= line_item.quantity %></td>
+        <td><%= number_to_currency line_item.unit_price %></td>
+        <td><%= number_to_currency line_item.full_price %></td>
+      </tr>
+    <% end %>
+    <tr>
+      <td>Shipping: <%= @cart.shipping_type.name %></td>
+      <td></td>
+      <td colspan="2"><%= number_to_currency @cart.shipping_cost %></td>
+    </tr>
+    <tr>
+      <td colspan="4"><hr/></td>
+    </tr>
+    <tr>
+      <th>Total</th>
+      <td></td>
+      <td colspan="2"><%= number_to_currency @cart.full_cost %></td>
+    </tr>
+  </tbody>
+</table>
+
+<form action="https://gw1.tponlinepayments.com/paymentform/" method="post" >
+   <input type="hidden" name="merchantID" value='137531' />
+   <input type="hidden" name="action" value="<%=@req[:action]%>" />
+   <input type="hidden" name="type" value="<%=@req[:type]%>" />
+   <input type="hidden" name="countryCode" value="<%=@req[:countryCode]%>" />
+   <input type="hidden" name="currencyCode" value="<%=@req[:currencyCode]%>" />
+   <input type="hidden" name="customerEmail" value="<%=@req[:customerEmail]%>" />
+   <input type="hidden" name="customerPostcode" value="<%=@req[:customerPostcode]%>" />
+   <input type="hidden" name="customerPhone" value="<%=@req[:customerPhone]%>" />
+   <input type="hidden" name="customerAddress" value="<%=@req[:customerAddress]%>" />
+   <input type="hidden" name="amount" value="<%=@req[:amount]%>" />
+   <input type="hidden" name="orderRef" value="<%=@req[:orderRef]%>" />
+   <input type="hidden" name="transactionUnique" value="<%=@req[:transactionUnique]%>" />
+   <input type="hidden" name="redirectURL" value="<%=@req[:redirectURL]%>" />
+   <input type="hidden" name="signature" value="<%=@ret%>" />
+   <input type="submit" value="Pay Now" />
+ </form>  
+
+<!-- 
+#################Stripe Payment do notremove #####################   
+###################################################################
+
+<%= link_to finish_cart_path, method: :post, class: "button" do %>
+ <span class="fa fa-check">Finish</span> 
+   Confirm the order 
+<% end %>
+
+<%= form_tag(finish_cart_path(@cart)) do %>
+  <script src="https://checkout.stripe.com/checkout.js" class="stripe-button"
+    data-key="<%= Rails.configuration.stripe[:publishable_key] %>"
+    data-description =  "Your order numbes is: <%= current_cart.id %>"
+    data-amount = <%= (@cart.full_cost.to_f*100).to_s %>
+    data-currency = "gbp"
+    data-locale="auto">
+  </script>
+<% end %>
+klucze do odpalenia sa w zmiennych srodowiskowych
+###################################################################
+-->

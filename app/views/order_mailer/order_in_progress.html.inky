@@ -1,0 +1,98 @@
+
+
+<container>
+  <spacer size="16"></spacer>
+  <row>
+    <columns>
+      <h2>Order Confirmation For <%=@order.user.first_name %> <%=@order.user.last_name %></h2>
+      <p>Your order has been confirmed and accepted for execution</p>
+
+      <spacer size="16"></spacer>
+
+      <callout class="secondary">
+        <row>
+          <columns large="6">
+            <p>
+              <strong>Payment Method</strong><br/>
+              Visa Card 
+            </p>
+            <p>
+              <strong>Email Address</strong><br/>
+              <%=@order.user.email %>
+            </p>
+            <p>
+              <strong>Order ID</strong><br/>
+              <%=@order.id %>
+            </p>
+          </columns>
+          <columns large="6">
+            <p>
+              <strong>Shipping Method</strong><br/>
+              <%=@order.shipping_type.name%><br/>
+            </p>
+            <p>
+              <strong>Shipping Address</strong><br/>
+               <%=@order.user.zip_code%><br/>
+              <%=@order.user.street%><br/>
+              <%=@order.user.city%>
+            </p>
+          </columns>
+        </row>
+      </callout>
+
+      <h4>Order Details</h4>
+      
+
+
+
+      <table>
+        <tr><th>Item</th><th>Quantity</th><th>Price</th><th>Total</th</tr>
+        
+
+         <% @order.line_items.each do |line_item| %>
+          <tr>
+            <td><%= line_item.item_name %>
+            <td><%= line_item.quantity %></td>
+            <td><%= number_to_currency line_item.unit_price %></td>
+            <td><%= number_to_currency line_item.full_price %></td>
+          </tr>
+        <% end %>
+
+
+        <tr>
+          <td colspan="2"><b>Shipping price:</b></td>
+          <td><%= number_to_currency @order.shipping_cost %></td>
+        </tr>  
+        <tr>  
+          <td colspan="2"><b>Subtotal:</b></td>
+          <td><%= number_to_currency @order.full_cost %></td>
+        </tr>
+      </table>
+
+      <hr/>
+
+      <h4>What's Next?</h4>
+
+      <p>Our carrier raven will prepare your order for delivery.</p>
+    </columns>
+  </row>
+  <row class="footer text-center">
+    <columns large="3">
+      <img src="http://placehold.it/170x30" alt="">
+    </columns>
+    <columns large="3">
+      <p>
+        Call us at 07854 111776 <br/>
+        Email us at info@bybritishdesign.com
+      </p>
+    </columns>
+    <columns large="3">
+      <p>
+        N11 3DA<br/>
+        28a-b Queens Parade
+        Friern Barnet Road
+        London
+      </p>
+    </columns>
+  </row>
+</container>

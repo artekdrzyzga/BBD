@@ -1,0 +1,35 @@
+<h1>Delivery Address</h1>
+
+<% if current_user %>
+
+  <section>
+    <ul class="contact">
+		  <li><%=current_user.first_name%> <%=current_user.last_name%> </li>
+      <li> <%=current_user.company_name%>  <%=current_user.street%>  <%=current_user.city%>  <%=current_user.zip_code%></li>
+      <li class="icon solid fa-phone"><%=current_user.phone%></li>
+    </ul>
+	</section>
+
+    <div class="row">
+      <div class="col-md-6">
+        <%= simple_form_for @cart, url: cart_path do |f| %>
+          <%= f.association :shipping_type, as: :select, prompt: nil %>
+          <%= f.input :comment %>
+          <%= button_tag class: "btn btn-success btn-lg go_forward" do %>
+            Save and go forward
+            <span class="fa fa-step-forward"></span>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+
+ <%else%>
+   <% controller.redirect_to sign_in_path %>
+ <%end%>
+
+
+
+
+
+
+

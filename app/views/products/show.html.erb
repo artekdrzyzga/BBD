@@ -1,0 +1,104 @@
+  <section id="banner">
+	  <div class="content">
+      <div class="row">
+        <div class="col-6 col-12-small">
+          <% if @product.picture.attached? %>
+            <div class="img-magnifier-container">
+              <img id="myimage" src="<%= url_for(@product.picture)%>" width="400" height="400">
+            </div> 		
+          <%end%>
+        </div> 
+         <div class="col-6 col-12-small">
+          <header>
+            <h3><%= @product.name %></h3>
+            <p>Code: <%= @product.code%></p>
+          </header>
+          <hr class="major" />
+            <p style="margin:0"><%= @product.description %></p>
+          <hr class="major" />
+            <p style="margin:0"> Composition: <%= @product.composition%></p>
+            <p style="margin:0">Dimensions: <%=@product.height%>   x   <%=@product.width%></p>
+            <p>Product Weight:  10 </p>
+          <hr class="major" />
+            <div class="row">
+              <div class="col-6 col-12-small align-left"><%=number_to_currency(@product.price)%></div>
+              <div class="col-6 col-12-small align-right">In Stock</div>
+            </div>
+          <hr class="major" />
+          <ul class="actions">
+            <%= link_to add_product_cart_path(product_id: @product.id), method: :post, class: "button fit small", remote: true do %>
+                <span class="fa fa-shopping-cart"> Add to cart
+            <% end %>
+          </ul>
+        </div>
+      </div>
+		</div>
+
+    
+  <script>
+    /* Initiate Magnify Function
+    with the id of the image, and the strength of the magnifier glass:*/
+    magnify("myimage", 3);
+  </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- 
+	<span class="image object">
+          <%= image_tag(@product.picture) if @product.picture.attached? %> 
+			</span>
+
+-->
+<!-- Wrapper 
+
+<div class="col-md-12">
+  <div class="card mb-4 shadow-sm">
+    <div class="card-body">
+      <div class="row">
+        <div class="col-md-6">
+          <div class="img-magnifier-container">
+            <%= image_tag(@product.picture, width: 366, align:'center', hspace:'20', id: 'myimage') if @product.picture.attached? %> 
+          </div>
+        </div>
+        <div class="col-md-6">  
+          <h1 class="text-center"><p><%= @product.name %></p></h1> 
+          <p1>Product code: <%= @product.code%></p>
+          <p1>Product dimensions:  Width - <%=@product.width%>cm,    Height - <%=@product.height%>cm</p>
+          <p class="lead"><%= number_to_currency(@product.price) %></p>
+          <p class="lead"><%= @product.description %></p> 
+          <p class="text-right">
+            <%= link_to add_product_cart_path(product_id: @product.id), method: :post, class: "btn btn-primary" do %> 
+              <span class="fa fa-shopping-cart"> Add to cart
+            <% end %>
+            <% if current_cart.line_items.present? %> 
+              <%= link_to cart_path,class: "btn btn-primary" do %>
+                <span class="fa fa-shopping-cart"> Go to cart
+              <%end%>
+            <%end%>
+          </p>     
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+-->
