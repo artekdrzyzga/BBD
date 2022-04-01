@@ -121,12 +121,11 @@ function magnify(imgID, zoom) {
 										</div>
 									</ul>
 								
-                  
                   <div id="content-placeholder">
-                    <%= link_to cart_path, :class => "koszyk", style:'position: fixed; right: 10px; z-index: 9999; color: black; background-color: white; box-shadow:5px 5px 15px #000000; border: 1px solid white; border-radius: 100%; height: 50px; width: 50px; text-align: center', data:{ turbolinks: "false" } do %>
-                      <span class="fa fa-shopping-cart" style="margin: 13px">
-                      <%= current_cart.line_items.map { |e| e.quantity }.sum %> 
-				   <!-- products for <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %> -->
+                    <%= link_to cart_path, :class => "koszyk", style:'position: fixed; right: 10px; z-index: 9999; color: black; background-color: white; box-shadow:5px 5px 15px #000000; border: 1px solid white; border-radius: 100%; height: 70px; width: 70px; text-align: center', data:{ turbolinks: "false" } do %>
+                      <span class="fa fa-shopping-cart" style="margin: 10px; font-size: 80%; padding-top: 10px;">
+                        <%= current_cart.line_items.map { |e| e.quantity }.sum %> 
+                        <%= number_to_currency(current_cart.line_items.map { |e| e.full_price }.sum) %>
                       </span>
 									  <% end %>
                   </div>	
