@@ -1,5 +1,6 @@
 <% if @cart.line_items.empty? %>
   <p class="text-center">Your shopping cart is empty!</p>
+
   <p class="text-center">
          <%= link_to  "Continue Shopping", root_path, class: "btn btn-primary", data:{ turbolinks: "false" }%>
   </p>
@@ -34,7 +35,13 @@
   <p>
     <%= link_to edit_cart_path, class: "button",data:{ turbolinks: "false" } do %>
       Proceed to Checkout
-      <span class="fa fa-step-forward"></span>
+      <span class="fa fa-step-forward"></span> 
     <% end %>
   </p>
+
+
+    <p class="text-center">
+         <%= link_to  "Continue Shopping", root_path, class: "btn btn-primary", data:{ turbolinks: "false" }%>
+  </p>
+  
 <% end %>
