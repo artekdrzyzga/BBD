@@ -5,10 +5,10 @@
            <% if @product.picture.attached? %> 
           <!--   <img src="<%= url_for(@product.picture)%>" width="400" height="400">  -->
 
-             <img id="myImg" src="<%= url_for(@product.picture)%>"  alt="Snow" style="width:100%;max-width:500px">
+             <img id="myImg" src="<%= url_for(@product.picture)%>"  alt="<%=@product.name%>" style="width:100%;max-width:500px">
 
 <!-- The Modal -->
-<div id="myModal" class="modal">
+<div id="myModal" class="modal close"> <!-- add classs close on picture, when you click on it will close -->
   <span class="close">&times;</span>
   <img class="modal-content" id="img01">
   <div id="caption"></div>
